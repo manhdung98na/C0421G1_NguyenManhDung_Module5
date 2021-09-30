@@ -1,0 +1,46 @@
+<h3>Bài 1</h3>
+<div class="row m-5">
+  <div class="col-12 d-flex justify-content-center">
+    <table>
+      <tr>
+        <td colspan="2">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="num1">Num1</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm" [(ngModel)]="firstNumber">
+          </div>
+        </td>
+        <td colspan="2">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="num2">Num2</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-sm"[(ngModel)]="secondNumber">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit" name="btn" value="+" class="btn btn-success"
+              (click)="calculate($event.target.value)">Addition (+)</button>
+        </td>
+        <td>
+          <button type="submit" name="btn" value="-" class="btn btn-success"
+                  (click)="calculate($event.target.value)">Subtraction (-)</button>
+        </td>
+        <td>
+          <button type="submit" name="btn" value="*" class="btn btn-success"
+                  (click)="calculate($event.target.value)">Multiplication (x)</button>
+        </td>
+        <td>
+          <button type="submit" name="btn" value="/" class="btn btn-success"
+                  (click)="calculate($event.target.value)">Division (/)</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <output [value]="result"></output>
+  </div>
+</div>
