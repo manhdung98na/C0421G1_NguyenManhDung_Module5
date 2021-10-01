@@ -1,0 +1,25 @@
+<h1 class="m-5">Rating bar</h1>
+<hr>
+<div class="m-5">
+  <p>{{value}}</p>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(1)"
+          [style.backgroundColor]="value >= 1 ? active : ''">1</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(2)"
+          [style.backgroundColor]="value >= 2 ? active : ''">2</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(3)"
+          [style.backgroundColor]="value >= 3 ? active : ''">3</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(4)"
+          [style.backgroundColor]="value >= 4 ? active : ''">4</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(5)"
+          [style.backgroundColor]="value >= 5 ? active : ''">5</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(6)"
+          [style.backgroundColor]="value >= 6 ? active : ''">6</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(7)"
+          [style.backgroundColor]="value >= 7 ? active : ''">7</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(8)"
+          [style.backgroundColor]="value >= 8 ? active : ''">8</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(9)"
+          [style.backgroundColor]="value >= 9 ? active : ''">9</button>
+  <button class="btn m-1 btn-secondary text-white" (click)="setValue(10)"
+          [style.backgroundColor]="value >= 10 ? active : ''">10</button>
+</div>
