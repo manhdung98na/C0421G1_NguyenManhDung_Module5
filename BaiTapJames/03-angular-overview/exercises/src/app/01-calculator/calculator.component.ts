@@ -6,8 +6,6 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-  firstNumber: number;
-  secondNumber: number;
   result: String = '';
 
   constructor() {
@@ -16,20 +14,20 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  calculate(s: string) {
+  calculate(s: string, firstNumber: number, secondNumber: number) {
     switch (s) {
       case '+':
-        this.result = (Number(this.firstNumber) + Number(this.secondNumber)).toString();
+        this.result = (Number(firstNumber) + Number(secondNumber)).toString();
         break;
       case '-':
-        this.result = (Number(this.firstNumber) - Number(this.secondNumber)).toString();
+        this.result = (Number(firstNumber) - Number(secondNumber)).toString();
         break;
       case '*':
-        this.result = (Number(this.firstNumber) * Number(this.secondNumber)).toString();
+        this.result = (Number(firstNumber) * Number(secondNumber)).toString();
         break;
       case '/':
-        if (this.secondNumber != 0) {
-          this.result = (Number(this.firstNumber) / Number(this.secondNumber)).toString();
+        if (secondNumber != 0) {
+          this.result = (Number(firstNumber) / Number(secondNumber)).toString();
         } else {
           this.result = 'Can not divide by zero';
         }

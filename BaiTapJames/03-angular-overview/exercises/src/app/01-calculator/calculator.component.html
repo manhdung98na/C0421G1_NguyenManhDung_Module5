@@ -7,33 +7,33 @@
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="num1">Num1</span>
             <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-sm" [(ngModel)]="firstNumber">
+                   aria-describedby="inputGroup-sizing-sm" #firstNumber>
           </div>
         </td>
         <td colspan="2">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="num2">Num2</span>
             <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-sm"[(ngModel)]="secondNumber">
+                   aria-describedby="inputGroup-sizing-sm" #secondNumber>
           </div>
         </td>
       </tr>
       <tr>
         <td>
           <button type="submit" name="btn" value="+" class="btn btn-success"
-              (click)="calculate($event.target.value)">Addition (+)</button>
+              (click)="calculate('+', firstNumber.value, secondNumber.value)">Addition (+)</button>
         </td>
         <td>
           <button type="submit" name="btn" value="-" class="btn btn-success"
-                  (click)="calculate($event.target.value)">Subtraction (-)</button>
+                  (click)="calculate('-', firstNumber.value, secondNumber.value)">Subtraction (-)</button>
         </td>
         <td>
           <button type="submit" name="btn" value="*" class="btn btn-success"
-                  (click)="calculate($event.target.value)">Multiplication (x)</button>
+                  (click)="calculate('*', firstNumber.value, secondNumber.value)">Multiplication (x)</button>
         </td>
         <td>
           <button type="submit" name="btn" value="/" class="btn btn-success"
-                  (click)="calculate($event.target.value)">Division (/)</button>
+                  (click)="calculate('/', firstNumber.value, secondNumber.value)">Division (/)</button>
         </td>
       </tr>
     </table>
