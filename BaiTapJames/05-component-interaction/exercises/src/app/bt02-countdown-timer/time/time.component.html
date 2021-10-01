@@ -1,0 +1,8 @@
+<div>
+  <button class="btn btn-light m-1" (click)="countdown()">Start</button>
+  <button class="btn btn-light m-1" (click)="stopCountdown()">Stop</button>
+  <button class="btn btn-light m-1" (click)="reset()">Reset</button>
+</div>
+<p>Click start button to start the Countdown</p>
+<p class="mt-5" *ngIf="time != 0; else timeOut">{{time}}</p>
+<ng-template #timeOut>Time is out</ng-template>
