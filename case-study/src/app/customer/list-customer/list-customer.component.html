@@ -1,0 +1,91 @@
+<div class="container-fluid m-0 p-0">
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <h1>CUSTOMER</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-primary m-2">
+        <a href="/customer/create" class="text-decoration-none text-white">Create</a>
+      </button>
+    </div>
+    <div class="col-6">
+      <form action="/customer/search" method="get" class="w-100">
+        <div class="input-group" style="float: right; width: 50%">
+          <input type="text" class="form-control mt-2 mb-2 ms-2" placeholder="Search here" id="input-search"
+                 name="input-search">
+          <button class="btn btn-outline-secondary mt-2 mb-2 me-2" type="submit" id="button-addon2">Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row" id="table-list-customer">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Gender</th>
+          <th>Id card</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <!--Dữ liệu cứng          -->
+          <td>1</td>
+          <td>Mạnh Dũng</td>
+          <td>Diamond</td>
+          <td>Male</td>
+          <td>123456789</td>
+          <td>
+            <input type="checkbox">
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Đức Mạnh</td>
+          <td>Silver</td>
+          <td>Male</td>
+          <td>123456788</td>
+          <td>
+            <input type="checkbox">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--Multiple delete-->
+      <button class="btn btn-danger d-flex position-absolute w-auto" style="right: 16px" id="btn-multi-delete"
+              data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Multi Delete
+      </button>
+    </div>
+  </div>
+
+  <a href="/customer/using-service" class="ps-2">Let's see who is using Service(s)!</a>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+       data-bs-keyboard="false" aria-labelledby="staticBackdropLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirm?</h5>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete customer(s)?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-confirm-no">No
+          </button>
+          <button type="button" class="btn btn-danger" id="btn-confirm-yes" data-bs-dismiss="modal">Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Hết model-->
+</div>
