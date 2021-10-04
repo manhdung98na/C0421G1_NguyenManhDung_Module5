@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="row text-center mt-5">
+    <h3>CREATE NEW SERVICE</h3>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <form action="/service/create" method="post" class="mt-3" style="width: 60vw;">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="service-id" class="form-label mt-2">ID</label>
+            <input type="text" class="form-control" id="service-id" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="service-name" class="form-label mt-2">Name</label>
+            <input type="text" class="form-control" id="service-name" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="service-area" class="mt-2">Area</label>
+            <div class="input-group mb-3">
+              <input type="number" min="1" id="service-area" class="form-control"
+                     aria-describedby="basic-addon2" required>
+              <span class="input-group-text"><span>m</span><sup>2</sup></span>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="service-cost" class="mt-2">Cost</label>
+            <div class="input-group mb-3">
+              <input type="number" min="0" id="service-cost" class="form-control"
+                     aria-describedby="basic-addon2" required>
+              <span class="input-group-text">VND</span>
+            </div>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="service-max-people" class="mt-2">Max people</label>
+            <input type="number" min="1" class="form-control" id="service-max-people" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4">
+            <label for="service-pool-area" class="mt-2">Pool area</label>
+            <div class="input-group mb-3">
+              <input type="number" min="0" id="service-pool-area" class="form-control"
+                     aria-describedby="basic-addon2" required>
+              <span class="input-group-text"><span>m</span><sup>2</sup></span>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="service-rent-type" class="mt-2">Rent type</label>
+            <select class="form-select" id="service-rent-type" required>
+              <option>Ngày</option>
+              <option>Tháng</option>
+              <option>Năm</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="service-type" class="mt-2">Service type</label>
+            <select class="form-select" id="service-type" required>
+              <option>Villa</option>
+              <option>House</option>
+              <option>Room</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="service-floors" class="mt-2">Floors</label>
+            <input type="number" min="1" class="form-control" id="service-floors" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="service-standard-room" class="form-label mt-2">Standard room</label>
+            <input type="text" class="form-control" id="service-standard-room">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="service-description" class="form-label mt-2">Desciption other convenience</label>
+            <input type="text" class="form-control" id="service-description">
+          </div>
+        </div>
+        <!--button-->
+        <div class="d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-dark m-1">
+            <a href="/service" class="text-decoration-none text-white">Back</a>
+          </button>
+          <button type="submit" class="btn btn-primary m-1" id="btn-create">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
