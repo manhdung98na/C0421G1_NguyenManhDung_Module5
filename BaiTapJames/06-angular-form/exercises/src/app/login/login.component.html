@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center">
+  <form [formGroup]="loginForm" class="m-5 w-50">
+    <div class="mb-3">
+      <label for="login-exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" class="form-control" id="login-exampleInputEmail1" aria-describedby="emailHelp"
+             formControlName="email">
+      <div class="form-text text-danger" *ngIf="loginForm.controls.email.hasError('required')
+      && loginForm.controls.email.dirty">Input email!
+      </div>
+      <div class="form-text text-danger"
+           *ngIf="loginForm.controls.email.hasError('email')">Wrong format!
+      </div>
+    </div>
+      <div class="mb-3">
+        <label for="login-password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="login-password" formControlName="password">
+        <div class="form-text text-danger"
+             *ngIf="loginForm.controls.password.hasError('required')
+           && loginForm.controls.password.touched">Please input password!
+        </div>
+        <div class="form-text text-danger"
+             *ngIf="loginForm.controls.password.hasError('minlength')
+           && loginForm.controls.password.touched">Min length is 6!
+        </div>
+      </div>
+    <button class="btn btn-primary" [disabled]="loginForm.invalid"
+            (click)="login()">Login</button>
+  </form>
+</div>
