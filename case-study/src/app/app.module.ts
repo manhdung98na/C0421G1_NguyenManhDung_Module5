@@ -14,6 +14,9 @@ import { DetailEmployeeComponent } from './employee/detail-employee/detail-emplo
 import { CreateServiceComponent } from './service/create-service/create-service.component';
 import { ListServiceComponent } from './service/list-service/list-service.component';
 import { DetailServiceComponent } from './service/detail-service/detail-service.component';
+import { CreateContractComponent } from './contract/create-contract/create-contract.component';
+import { ListContractComponent } from './contract/list-contract/list-contract.component';
+import { DetailContractComponent } from './contract/detail-contract/detail-contract.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +31,10 @@ import { DetailServiceComponent } from './service/detail-service/detail-service.
         DetailEmployeeComponent,
         CreateServiceComponent,
         ListServiceComponent,
-        DetailServiceComponent
+        DetailServiceComponent,
+        CreateContractComponent,
+        ListContractComponent,
+        DetailContractComponent
     ],
   imports: [
     BrowserModule,
