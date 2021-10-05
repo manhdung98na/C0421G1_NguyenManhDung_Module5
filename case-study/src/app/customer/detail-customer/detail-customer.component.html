@@ -2,68 +2,76 @@
   <div class="row text-center mt-5">
     <h3>CUSTOMER DETAIL</h3>
   </div>
-  <form method="post" action="/customer/edit">
+  <form>
     <div class="row mt-3 d-flex justify-content-center">
       <table class="table w-50">
         <tr>
           <th class="w-25">ID</th>
           <td>
-            <input type="text" id="input-id" disabled class="border-0 w-100 bg-white" value="KH-0001">
+            <input type="text" id="input-id" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerId">
           </td>
         </tr>
         <tr>
           <th>Name</th>
           <td>
-            <input type="text" id="input-name" disabled class="border-0 w-100 bg-white" value="Mạnh Dũng">
+            <input type="text" id="input-name" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerName">
           </td>
         </tr>
         <tr>
           <th>Gender</th>
           <td>
-            <select class="form-select border-0 w-100 bg-white" id="input-gender" disabled required>
-              <option>Male</option>
+            <select class="form-select border-0 w-100 bg-white" id="input-gender" [disabled]="disabled">
+              <option [selected]="customerDetail.customerGender == 1 ? 'selected' : ''">Male</option>
+              <option [selected]="customerDetail.customerGender == 0 ? 'selected' : ''">Female</option>
+              <option [selected]="customerDetail.customerGender == 2 ? 'selected' : ''">Other</option>
             </select>
           </td>
         </tr>
         <tr>
           <th>Type</th>
           <td>
-            <select class="form-select border-0 w-100 bg-white" id="input-type" required disabled>
-              <option>Diamond</option>
+            <select class="form-select border-0 w-100 bg-white" id="input-type" [disabled]="disabled">
+              <option *ngFor="let type of customerType" [text]="type.customerTypeName"
+                      [selected]="type.customerTypeId == customerDetail.customerType.customerTypeId">
+              </option>
             </select>
           </td>
         </tr>
         <tr>
           <th>Birthday</th>
           <td>
-            <input type="date" id="input-birthday" disabled class="border-0 w-100 bg-white"
-                   value="13/10/1998">
+            <input type="date" id="input-birthday" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerBirthday">
           </td>
         </tr>
         <tr>
           <th>ID Card</th>
           <td>
-            <input type="text" id="input-id-card" disabled class="border-0 w-100 bg-white" value="123456789">
+            <input type="text" id="input-id-card" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerIdCard">
           </td>
         </tr>
         <tr>
           <th>Phone</th>
           <td>
-            <input type="text" id="input-phone" disabled class="border-0 w-100 bg-white" value="012345678">
+            <input type="text" id="input-phone" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerPhone">
           </td>
         </tr>
         <tr>
           <th>Email</th>
           <td>
-            <input type="text" id="input-email" disabled class="border-0 w-100 bg-white"
-                   value="manhdung98na@gmail.com">
+            <input type="text" id="input-email" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerEmail">
           </td>
         </tr>
         <tr>
           <th>Address</th>
           <td>
-            <input type="text" id="input-address" disabled class="border-0 w-100 bg-white"
-                   value="Nghệ An">
+            <input type="text" id="input-address" disabled class="border-0 w-100 bg-white" [disabled]="disabled"
+                   [value]="customerDetail.customerAddress">
           </td>
         </tr>
       </table>
@@ -72,8 +80,10 @@
       <button class="btn btn-secondary m-1">
         <a href="/customer" class="text-decoration-none text-white">Back</a>
       </button>
-      <button class="btn btn-warning m-1 text-white" id="btn-edit" type="button">Edit</button>
-      <button class="btn btn-success m-1 text-white" id="btn-submit" type="submit" hidden>Submit</button>
+      <button class="btn btn-warning m-1 text-white" id="btn-edit" type="button"
+              (click)="changeStatusEditable()" *ngIf="disabled">Edit</button>
+      <button class="btn btn-success m-1 text-white" id="btn-submit" type="button"
+              (click)="updateCustomer()" *ngIf="!disabled">Submit</button>
     </div>
   </form>
 </div>

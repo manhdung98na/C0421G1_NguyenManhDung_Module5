@@ -35,25 +35,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <!--Dữ liệu cứng          -->
-          <td>1</td>
-          <td>Mạnh Dũng</td>
-          <td>Diamond</td>
-          <td>Male</td>
-          <td>123456789</td>
-          <td>
-            <input type="checkbox">
+        <tr *ngFor="let customer of listCustomer" (click)="showDetailCustomer(customer)">
+          <td>{{customer.customerId}}</td>
+          <td>{{customer.customerName}}</td>
+          <td>{{customer.customerType.customerTypeName}}</td>
+          <td [ngSwitch]="customer.customerGender">
+            <span *ngSwitchCase="0">Female</span>
+            <span *ngSwitchCase="1">Male</span>
+            <span *ngSwitchDefault>Other</span>
           </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Đức Mạnh</td>
-          <td>Silver</td>
-          <td>Male</td>
-          <td>123456788</td>
+          <td>{{customer.customerIdCard}}</td>
           <td>
-            <input type="checkbox">
+            <input type="checkbox" [value]="customer.customerId">
           </td>
         </tr>
         </tbody>
@@ -88,4 +81,5 @@
     </div>
   </div>
   <!--Hết model-->
+  <app-detail-customer [customerDetail]="customerChosen"></app-detail-customer>
 </div>
