@@ -1,0 +1,8 @@
+<h1 class="d-flex justify-content-center">DICTIONARY PAGE</h1>
+<div class="list-group">
+  <div class="list-group-item list-group-item-action text-center" *ngFor="let w of words">
+    <a [routerLink]="['dictionary',w.word]">{{w.word}}</a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
