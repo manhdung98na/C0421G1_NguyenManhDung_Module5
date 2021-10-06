@@ -23,6 +23,6 @@ export class ProductListComponent implements OnInit {
   }
   delete(id: number|string): void{
     this.productService.delete(id);
-    // window.location.reload();
+    this.ngOnInit();
   }
 }
