@@ -1,0 +1,34 @@
+{
+  "todo": [
+    {
+      "id": 1,
+      "content": "công việc 1",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "content": "công việc 2",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "content": "công việc 3",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "content": "công việc 4",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "content": "công việc 5",
+      "completed": true
+    },
+    {
+      "id": 6,
+      "content": "công việc 6",
+      "completed": true
+    }
+  ]
+}
