@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: 'product',
-    loadChildren: () => import('./bt02-product-management/product.module').then(module => module.ProductModule)
+    loadChildren: () => import('./bt02-product-management/product/product.module').then(module => module.ProductModule)
   },
   {
     path: 'category',

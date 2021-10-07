@@ -4,37 +4,57 @@
       "id": 1,
       "name": "IPhone 12",
       "price": 2400000,
-      "description": "New"
+      "description": "New",
+      "category": {
+        "id": 1,
+        "name": "IPhonee"
+      }
     },
     {
       "id": 2,
       "name": "IPhone 11",
       "price": 1560000,
-      "description": "Like new"
+      "description": "Like new",
+      "category": {
+        "id": 2,
+        "name": "Samsung"
+      }
     },
     {
       "id": 3,
       "name": "IPhone X",
       "price": 968000,
-      "description": "97%"
+      "description": "97%",
+      "category": {
+        "id": 1,
+        "name": "IPhonee"
+      }
     },
     {
-      "id": 4,
-      "name": "IPhone 8",
-      "price": 7540000,
-      "description": "98%"
+      "name": "1",
+      "price": 1,
+      "description": "1",
+      "category": {
+        "id": 1,
+        "name": "IPhonee"
+      },
+      "id": 4
     },
     {
-      "id": 5,
-      "name": "IPhone 11 Pro",
-      "price": 1895000,
-      "description": "Like new"
+      "name": "1",
+      "price": 2,
+      "description": "3",
+      "category": {
+        "id": 2,
+        "name": "Samsung"
+      },
+      "id": 5
     }
   ],
   "categories": [
     {
       "id": 1,
-      "name": "IPhone"
+      "name": "IPhonee"
     },
     {
       "id": 2,

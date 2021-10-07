@@ -5,6 +5,7 @@
     <td>Tên</td>
     <td>Giá</td>
     <td>Mô tả</td>
+    <td>Category</td>
     <td>Action</td>
   </tr>
   <tr *ngFor="let product of products; index as i">
@@ -12,6 +13,7 @@
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
+    <td>{{product.category.name}}</td>
     <td>
       <button (click)="delete(product.id)">Delete</button>
     </td>
