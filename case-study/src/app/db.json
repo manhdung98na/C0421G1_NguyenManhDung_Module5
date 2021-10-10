@@ -1,0 +1,206 @@
+{
+  "customers": [
+    {
+      "id": "KH-0001",
+      "name": "Thu Hà",
+      "gender": "2",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "2001-01-05",
+      "idCard": "147147147",
+      "phone": "0901471471",
+      "email": "t.ha@gmail.com",
+      "address": "Buôn Mê Thuộtt",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0002",
+      "address": "Đà Nẵng",
+      "birthday": "1995-08-05",
+      "email": "kanh@gmail.com",
+      "gender": 0,
+      "idCard": "444444444",
+      "name": "Kim Anh",
+      "phone": "0914444444",
+      "type": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0003",
+      "name": "Mạnh Dũng",
+      "gender": 2,
+      "type": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "birthday": "1999-10-07",
+      "idCard": "111111111",
+      "phone": "0901111111",
+      "email": "1@1",
+      "address": "1",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0004",
+      "name": "Mạnhhhhh",
+      "gender": 1,
+      "type": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "birthday": "1999-10-07",
+      "idCard": "122223451",
+      "phone": "0903211111",
+      "email": "1@1231231",
+      "address": "1",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0005",
+      "name": "Mạnh Dũng",
+      "gender": "1",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "1998-10-13",
+      "idCard": "111111112",
+      "phone": "0901471472",
+      "email": "mdung@gmail.com",
+      "address": "Nghệ An",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0006",
+      "name": "Thu Hà",
+      "gender": "2",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "2001-01-05",
+      "idCard": "147147147",
+      "phone": "0901471471",
+      "email": "t.ha@gmail.com",
+      "address": "Buôn Mê Thuộtt",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0007",
+      "address": "Đà Nẵng",
+      "birthday": "1995-08-05",
+      "email": "kanh@gmail.com",
+      "gender": 0,
+      "idCard": "444444444",
+      "name": "Kim Anh",
+      "phone": "0914444444",
+      "type": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0008",
+      "name": "Mạnh Dũng",
+      "gender": 2,
+      "type": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "birthday": "1999-10-07",
+      "idCard": "111111111",
+      "phone": "0901111111",
+      "email": "1@1",
+      "address": "1",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0009",
+      "name": "Mạnhhhhh",
+      "gender": 1,
+      "type": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "birthday": "1999-10-07",
+      "idCard": "122223451",
+      "phone": "0903211111",
+      "email": "1@1231231",
+      "address": "1",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0010",
+      "name": "Mạnh Dũng",
+      "gender": "1",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "1998-10-13",
+      "idCard": "111111112",
+      "phone": "0901471472",
+      "email": "mdung@gmail.com",
+      "address": "Nghệ An",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0011",
+      "name": "Mạnh Dũng",
+      "gender": "1",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "1998-10-13",
+      "idCard": "111111112",
+      "phone": "0901471472",
+      "email": "mdung@gmail.com",
+      "address": "Nghệ An",
+      "isDeleted": false
+    },
+    {
+      "id": "KH-0012",
+      "name": "Mạnh Dũng",
+      "gender": "1",
+      "type": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "birthday": "1998-10-13",
+      "idCard": "111111112",
+      "phone": "0901471472",
+      "email": "mdung@gmail.com",
+      "address": "Nghệ An",
+      "isDeleted": false
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ]
+}

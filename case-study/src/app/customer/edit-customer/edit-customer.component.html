@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <div class="row text-center mt-5">
-    <h3>CREATE NEW CUSTOMER</h3>
+    <h3>EDIT CUSTOMER</h3>
   </div>
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
-      <form style="width: 60vw" [formGroup]="createForm" (ngSubmit)="createNewCustomer()">
+      <form style="width: 60vw" [formGroup]="editForm" (ngSubmit)="editCustomer()">
         <div class="row">
           <!--ID-->
           <div class="form-group col-md-6">
             <label for="customer-id" class="form-label mt-2">ID</label>
-            <input type="text" class="form-control mb-1" id="customer-id" formControlName="id" required>
+            <input type="text" class="form-control mb-1" id="customer-id" formControlName="id" readonly>
             <mat-error *ngFor="let validator of validateMessage.id">
-              <mat-error *ngIf="createForm.get('id').hasError(validator.type)
-                && createForm.get('id').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('id').hasError(validator.type)
+                && editForm.get('id').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
           <!--NAME-->
@@ -20,8 +20,8 @@
             <label for="customer-name" class="form-label mt-2">Name</label>
             <input type="text" class="form-control mb-1" id="customer-name" formControlName="name" required>
             <mat-error *ngFor="let validator of validateMessage.name">
-              <mat-error *ngIf="createForm.get('name').hasError(validator.type)
-                && createForm.get('name').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('name').hasError(validator.type)
+                && editForm.get('name').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
         </div>
@@ -35,20 +35,20 @@
               <option value="2">Other</option>
             </select>
             <mat-error *ngFor="let validator of validateMessage.gender">
-              <mat-error *ngIf="createForm.get('gender').hasError(validator.type)
-                && createForm.get('gender').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('gender').hasError(validator.type)
+                && editForm.get('gender').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
           <!--TYPE-->
           <div class="form-group col-md-4">
             <label for="customer-type" class="mt-2">Type</label>
             <select class="form-select mb-1" id="customer-type" formControlName="type" required>
-              <option *ngFor="let type of customerType" [selected]="type.id == createForm.controls.type.value.id"
-                      [ngValue]="type" [text]="type.name"></option>
+              <option *ngFor="let type of customerType" [ngValue]="type" [text]="type.name"
+              [selected]="type.id == customerEdit?.type.id"></option>
             </select>
             <mat-error *ngFor="let validator of validateMessage.type">
-              <mat-error *ngIf="createForm.get('type').hasError(validator.type)
-                && createForm.get('type').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('type').hasError(validator.type)
+                && editForm.get('type').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
           <!--BIRTHDAY-->
@@ -56,8 +56,8 @@
             <label for="customer-birthday" class="mt-2">Birthday</label>
             <input type="date" class="form-control mb-1" id="customer-birthday" formControlName="birthday" required>
             <mat-error *ngFor="let validator of validateMessage.birthday">
-              <mat-error *ngIf="createForm.get('birthday').hasError(validator.type)
-                && createForm.get('birthday').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('birthday').hasError(validator.type)
+                && editForm.get('birthday').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
         </div>
@@ -67,8 +67,8 @@
             <label for="customer-id-card" class="mt-2">ID Card</label>
             <input type="text" class="form-control mb-1" id="customer-id-card" formControlName="idCard" required>
             <mat-error *ngFor="let validator of validateMessage.idCard">
-              <mat-error *ngIf="createForm.get('idCard').hasError(validator.type)
-                && createForm.get('idCard').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('idCard').hasError(validator.type)
+                && editForm.get('idCard').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
           <!--PHONE-->
@@ -76,8 +76,8 @@
             <label for="customer-phone" class="mt-2">Phone</label>
             <input type="text" class="form-control mb-1" id="customer-phone" formControlName="phone" required>
             <mat-error *ngFor="let validator of validateMessage.phone">
-              <mat-error *ngIf="createForm.get('phone').hasError(validator.type)
-                && createForm.get('phone').dirty">{{validator.message}}</mat-error>
+              <mat-error *ngIf="editForm.get('phone').hasError(validator.type)
+                && editForm.get('phone').dirty">{{validator.message}}</mat-error>
             </mat-error>
           </div>
         </div>
@@ -86,8 +86,8 @@
           <label for="customer-email" class="mt-2">Email</label>
           <input type="text" class="form-control mb-1" id="customer-email" formControlName="email" required>
           <mat-error *ngFor="let validator of validateMessage.email">
-            <mat-error *ngIf="createForm.get('email').hasError(validator.type)
-                && createForm.get('email').dirty">{{validator.message}}</mat-error>
+            <mat-error *ngIf="editForm.get('email').hasError(validator.type)
+                && editForm.get('email').dirty">{{validator.message}}</mat-error>
           </mat-error>
         </div>
         <!--ADDRESS-->
@@ -95,16 +95,21 @@
           <label for="customer-address" class="mt-2">Address</label>
           <input type="text" class="form-control mb-1" id="customer-address" formControlName="address" required>
           <mat-error *ngFor="let validator of validateMessage.address">
-            <mat-error *ngIf="createForm.get('address').hasError(validator.type)
-                && createForm.get('address').dirty">{{validator.message}}</mat-error>
+            <mat-error *ngIf="editForm.get('address').hasError(validator.type)
+                && editForm.get('address').dirty">{{validator.message}}</mat-error>
           </mat-error>
+        </div>
+        <div class="form-group" hidden>
+          <label for="customer-address" class="mt-2">Delete</label>
+          <input type="text" class="form-control mb-1"  formControlName="isDeleted" >
+
         </div>
         <!--button-->
         <div class="d-flex justify-content-center mt-3">
           <button type="button" class="btn btn-dark m-1">
-            <a href="" class="text-decoration-none text-white">Back</a>
+            <a routerLink="/customers/list" class="text-decoration-none text-white">Back</a>
           </button>
-          <button type="submit" class="btn btn-primary m-1" [disabled]="createForm.invalid">Create</button>
+          <button type="submit" class="btn btn-primary m-1">Submit</button>
         </div>
       </form>
     </div>

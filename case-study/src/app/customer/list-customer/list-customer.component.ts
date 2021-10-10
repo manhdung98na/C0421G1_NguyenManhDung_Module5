@@ -1,6 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from "../customer";
-import {CustomerType} from "../customer-type";
+import {Customer} from '../model/customer';
+import {CustomerType} from '../model/customer-type';
+import {CustomerService} from '../service/customer.service';
+import {CustomerTypeService} from '../service/customer-type.service';
+import {MatDialog} from '@angular/material/dialog';
+import {DetailCustomerComponent} from '../detail-customer/detail-customer.component';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup} from '@angular/forms';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-customer',
@@ -8,60 +15,99 @@ import {CustomerType} from "../customer-type";
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
-  listCustomer: Customer[] | undefined;
-  customerType: CustomerType[] = [
-    {customerTypeId: 1, customerTypeName: 'Diamond'},
-    {customerTypeId: 2, customerTypeName: 'Gold'},
-    {customerTypeId: 3, customerTypeName: 'Silver'}
-  ];
+  listCustomer: Customer[];
+  customerType: CustomerType[];
+  checkedArr: string[] = [];
+  searchForm: FormGroup = new FormGroup({
+    type: new FormControl(),
+    name: new FormControl()
+  });
+  pageSlice;
+  pageSize = 5;
 
-  constructor() {
-    this.listCustomer = [
-      {
-        customerId: 'KH-0001',
-        customerName: 'Mạnh Dũng',
-        customerGender: 1,
-        customerType: this.customerType[0],
-        customerBirthday: '1998-11-11',
-        customerEmail: 'mdung@gmail.com',
-        customerAddress: 'Nghệ An',
-        customerIdCard: '123456789',
-        customerPhone: '0901234567',
-        isDeleted: false
-      },
-      {
-        customerId: 'KH-0002',
-        customerName: 'Bảo Hoàng',
-        customerGender: 2,
-        customerType: this.customerType[1],
-        customerBirthday: '2000-12-10',
-        customerEmail: 'bhoang@gmail.com',
-        customerAddress: 'Huế',
-        customerIdCard: '111444555',
-        customerPhone: '0902222222',
-        isDeleted: false
-      },
-      {
-        customerId: 'KH-0003',
-        customerName: 'Lê Ly',
-        customerGender: 0,
-        customerType: this.customerType[2],
-        customerBirthday: '2002-11-11',
-        customerEmail: 'lly@gmail.com',
-        customerAddress: 'Đà Nẵng',
-        customerIdCard: '124141241',
-        customerPhone: '0901111111',
-        isDeleted: false
-      },
-    ];
+  constructor(private customerService: CustomerService,
+              private customerTypeService: CustomerTypeService,
+              private router: Router,
+              private dialog: MatDialog) {
+
   }
 
   ngOnInit(): void {
+    this.customerTypeService.getAll().subscribe(next => {
+      this.customerType = next;
+      this.customerService.getAll().subscribe(next => {
+        this.listCustomer = next;
+        this.pageSlice = this.listCustomer.slice(0, this.pageSize);
+      });
+    });
   }
 
-  customerChosen: Customer|undefined;
+  delete() {
+    for (let i in this.checkedArr) {
+      this.customerService.findById(this.checkedArr[i]).subscribe(next => {
+          let customerTemp = next[0];
+          customerTemp.isDeleted = true;
+          this.customerService.update(customerTemp).subscribe(next=> {
+            console.log("Xoá " + customerTemp.id + " thành công");
+          });
+        }, error => {
+          console.log(error);
+        }
+      );
+    }
+    this.checkedArr.splice(0, this.checkedArr.length);
+    this.ngOnInit();
+  }
 
-  showDetailCustomer(customer: Customer) {
-    this.customerChosen = customer;
+  isChecked(value: any, id: string) {
+    if (value.currentTarget.checked) {
+      this.checkedArr.push(id);
+    } else {
+      this.checkedArr = this.checkedArr.filter(item => item != id);
+    }
+    console.log(this.checkedArr);
+  }
+
+  openDialog(id: string) {
+    let customerDetail: Customer;
+    this.customerService.findById(id).subscribe(next => {
+      customerDetail = next[0];
+      let dialogRef = this.dialog.open(DetailCustomerComponent, {
+        data: customerDetail,
+        width: '400px'
+      });
+      dialogRef.afterClosed().subscribe(next => {
+        if (next == 'edit') {
+          this.router.navigateByUrl('/customers/edit/' + id);
+        }
+      });
+    });
+  }
+
+  search() {
+    let typeSearch = this.searchForm.value.type;
+    if (typeSearch == 'Customer Type') {
+      typeSearch = null;
+    }
+    let nameSearch = this.searchForm.value.name;
+    if (nameSearch == '') {
+      nameSearch = null;
+    }
+    if (nameSearch == null && typeSearch == null) {
+      this.ngOnInit();
+    } else {
+      this.customerService.search(typeSearch, nameSearch).subscribe(next => {
+        this.listCustomer = next;
+      });
+    }
+  }
+
+  changePage(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.listCustomer.length) {
+      endIndex = this.listCustomer.length;
+    }
+    this.pageSlice = this.listCustomer.slice(startIndex, endIndex);
   }
 }
