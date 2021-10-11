@@ -1,0 +1,98 @@
+{
+  "showtimes": [
+    {
+      "id": "CI-0001",
+      "movie": {
+        "id": 1,
+        "name": "Fast and Furious"
+      },
+      "date": "2021-11-05",
+      "tickets": 60,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0002",
+      "movie": {
+        "id": 1,
+        "name": "Fast and Furious"
+      },
+      "date": "2021-11-06",
+      "tickets": 50,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0003",
+      "movie": {
+        "id": 3,
+        "name": "Finding Nemo"
+      },
+      "date": "2021-10-08",
+      "tickets": 11,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0009",
+      "movie": {
+        "id": 2,
+        "name": "The Conjuring"
+      },
+      "date": "2021-10-02",
+      "tickets": 111,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0008",
+      "movie": {
+        "id": 1,
+        "name": "Fast and Furious"
+      },
+      "date": "2021-10-02",
+      "tickets": 1,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0006",
+      "movie": {
+        "id": 1,
+        "name": "Fast and Furious"
+      },
+      "date": "2021-10-09",
+      "tickets": 111,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0007",
+      "movie": {
+        "id": 3,
+        "name": "Finding Nemo"
+      },
+      "date": "2021-09-30",
+      "tickets": 111,
+      "isDeleted": false
+    },
+    {
+      "id": "CI-0004",
+      "movie": {
+        "id": 1,
+        "name": "Fast and Furious"
+      },
+      "date": "2021-11-25",
+      "tickets": 1,
+      "isDeleted": true
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "name": "Fast and Furious"
+    },
+    {
+      "id": 2,
+      "name": "The Conjuring"
+    },
+    {
+      "id": 3,
+      "name": "Finding Nemo"
+    }
+  ]
+}
