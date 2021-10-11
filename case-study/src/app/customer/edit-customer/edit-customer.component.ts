@@ -84,7 +84,7 @@ export class EditCustomerComponent implements OnInit {
   editCustomer() {
     let id = this.editForm.value.id;
     let message = '';
-    this.customerService.getAll().subscribe(next => {
+    this.customerService.getAllAvailable().subscribe(next => {
       for (let i in next) {
         if (next[i].id != id && next[i].phone == this.editForm.value.phone) {
           message += 'Duplicate phone!';
@@ -107,9 +107,11 @@ export class EditCustomerComponent implements OnInit {
         this.router.navigateByUrl('/customers/list');
         this.notification.showNotification('Success!', 'Done', 'success');
       }, error => {
+        this.notification.showNotification('Error!', 'OK', 'error');
         console.log(error);
       });
     }, error => {
+      this.notification.showNotification('Error!', 'OK', 'error');
       console.log(error);
     });
   }

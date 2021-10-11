@@ -35,7 +35,7 @@ export class ListCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.customerTypeService.getAll().subscribe(next => {
       this.customerType = next;
-      this.customerService.getAll().subscribe(next => {
+      this.customerService.getAllAvailable().subscribe(next => {
         this.listCustomer = next;
         this.pageSlice = this.listCustomer.slice(0, this.pageSize);
       });
@@ -98,11 +98,13 @@ export class ListCustomerComponent implements OnInit {
     } else {
       this.customerService.search(typeSearch, nameSearch).subscribe(next => {
         this.listCustomer = next;
+        this.pageSlice = this.listCustomer.slice(0, this.pageSize);
       });
     }
   }
 
   changePage(event: PageEvent) {
+    this.pageSize = event.pageSize;
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.listCustomer.length) {

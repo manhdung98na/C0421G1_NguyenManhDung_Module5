@@ -1,0 +1,59 @@
+<h3 class="text-center" mat-dialog-title>SERVICE DETAIL</h3>
+<mat-dialog-content>
+  <table class="table w-100">
+    <tr>
+      <th class="w-25 m-2">ID</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.id">
+      </td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.name">
+      </td>
+    </tr>
+    <tr>
+      <th>Area</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.area">
+      </td>
+    </tr>
+    <tr>
+      <th>Floors</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.floors">
+      </td>
+    </tr>
+    <tr>
+      <th>Max people</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.maxPeople">
+      </td>
+    </tr>
+    <tr>
+      <th>Cost</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.cost">
+      </td>
+    </tr>
+    <tr>
+      <th>Rent type</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled [value]="data.rentType.name">
+      </td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>
+        <input type="text" class="form-control mb-1 border-0 w-100 bg-white" disabled
+               [value]="data.isAvailable ? 'Available' : 'Not available'">
+      </td>
+    </tr>
+
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center">
+  <button mat-button mat-dialog-close="edit" class="btn btn-warning m-1">Edit</button>
+  <button mat-button mat-dialog-close class="btn btn-secondary m-1">Back</button>
+</mat-dialog-actions>

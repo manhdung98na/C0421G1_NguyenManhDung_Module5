@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Customer} from '../model/customer';
+import {Service} from '../model/service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
-  url = environment.customerUrl;
+export class ServiceService {
+  url = environment.serviceUrl;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -21,15 +21,15 @@ export class CustomerService {
     return this.httpClient.get(this.url);
   }
 
-  add(customer: Customer): Observable<any> {
-    return this.httpClient.post(this.url, customer);
+  add(service: Service): Observable<any> {
+    return this.httpClient.post(this.url, service);
   }
 
   findById(id: string): Observable<any> {
     return this.httpClient.get(this.url + '?id=' + id);
   }
 
-  update(obj: Customer): Observable<any> {
+  update(obj: Service): Observable<any> {
     return this.httpClient.put(this.url + '/' + obj.id, obj);
   }
 
@@ -40,11 +40,11 @@ export class CustomerService {
   search(type?: string, name?: string): Observable<any> {
     let sql = '';
     if (type != null && name != null) {
-      sql = this.url + '?name_like=' + name + '&type.name=' + type + "&isDeleted=false&_sort=id&_order=asc";
+      sql = this.url + '?name_like=' + name + '&rentType.name=' + type +"&isDeleted=false&_sort=id&_order=asc";
     } else if (type == null) {
-      sql = this.url + '?name_like=' + name + "&isDeleted=false&_sort=id&_order=asc";
+      sql = this.url + '?name_like=' + name +"&isDeleted=false&_sort=id&_order=asc";
     } else {
-      sql = this.url + '?type.name=' + type + "&isDeleted=false&_sort=id&_order=asc";
+      sql = this.url + '?rentType.name=' + type +"&isDeleted=false&_sort=id&_order=asc";
     }
     console.log(sql);
     return this.httpClient.get(sql);

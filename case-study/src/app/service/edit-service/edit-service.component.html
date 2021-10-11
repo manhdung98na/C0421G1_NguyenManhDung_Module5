@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <div class="row text-center mt-5">
+    <h3>EDIT SERVICE</h3>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <form style="width: 60vw" [formGroup]="editForm" (ngSubmit)="editService()">
+        <div class="row">
+          <div class="row">
+            <!--ID-->
+            <div class="form-group col-md-6">
+              <label for="service-id" class="form-label mt-2">ID</label>
+              <input type="text" class="form-control mb-1" id="service-id" formControlName="id" readonly>
+            </div>
+            <!--NAME-->
+            <div class="form-group col-md-6">
+              <label for="service-name" class="form-label mt-2">Name</label>
+              <input type="text" class="form-control mb-1" id="service-name" formControlName="name" required>
+              <mat-error *ngFor="let validator of validateMessage.name">
+                <mat-error *ngIf="editForm.get('name').hasError(validator.type)
+                && editForm.get('name').touched">{{validator.message}}</mat-error>
+              </mat-error>
+            </div>
+          </div>
+          <div class="row">
+            <!--AREA-->
+            <div class="form-group col-md-4">
+              <label for="service-area" class="mt-2">Area</label>
+              <input type="number" class="form-control mb-1" id="service-area" formControlName="area" required>
+              <mat-error *ngFor="let validator of validateMessage.area">
+                <mat-error *ngIf="editForm.get('area').hasError(validator.type)
+                && editForm.get('area').touched">{{validator.message}}</mat-error>
+              </mat-error>
+            </div>
+            <!--FLOORS-->
+            <div class="form-group col-md-4">
+              <label for="service-floor" class="mt-2">FLOORS</label>
+              <input type="number" class="form-control mb-1" id="service-floor" formControlName="floors" required>
+              <mat-error *ngFor="let validator of validateMessage.floors">
+                <mat-error *ngIf="editForm.get('floors').hasError(validator.type)
+                && editForm.get('floors').touched">{{validator.message}}</mat-error>
+              </mat-error>
+            </div>
+            <!--MAX PEOPLE-->
+            <div class="form-group col-md-4">
+              <label for="service-people" class="mt-2">Max people</label>
+              <input type="number" class="form-control mb-1" id="service-people" formControlName="maxPeople" required>
+              <mat-error *ngFor="let validator of validateMessage.maxPeople">
+                <mat-error *ngIf="editForm.get('maxPeople').hasError(validator.type)
+                && editForm.get('maxPeople').touched">{{validator.message}}</mat-error>
+              </mat-error>
+            </div>
+          </div>
+          <div class="row">
+            <!--COST-->
+            <div class="form-group col-md-3">
+              <label for="service-cost" class="mt-2">Cost</label>
+              <input type="number" class="form-control mb-1" id="service-cost" formControlName="cost" required>
+              <mat-error *ngFor="let validator of validateMessage.cost">
+                <mat-error *ngIf="editForm.get('cost').hasError(validator.type)
+                && editForm.get('cost').touched">{{validator.message}}</mat-error>
+              </mat-error>
+            </div>
+            <!--RENT TYPE-->
+            <div class="form-group col-md-3">
+              <label for="service-rent-type" class="mt-2">Rent type</label>
+              <select class="form-select mb-1" id="service-rent-type" formControlName="rentType" required>
+                <option *ngFor="let type of rentType" [selected]="type.id == serviceEdit?.rentType.id"
+                        [ngValue]="type" [text]="type.name"></option>
+              </select>
+            </div>
+            <!--STATUS-->
+            <div class="form-group col-md-6">
+              <label class="mt-2">Status</label>
+              <div class="form-control">
+                <div class="form-check form-check-inline w-50 m-0">
+                  <input class="form-check-input" formControlName="isAvailable" type="radio" name="inlineRadioOptions"
+                         id="inlineRadio1" value="true" [checked]="serviceEdit?.isAvailable">
+                  <label class="form-check-label" for="inlineRadio1">Available</label>
+                </div>
+                <div class="form-check form-check-inline w-50 m-0">
+                  <input class="form-check-input" formControlName="isAvailable" type="radio" name="inlineRadioOptions"
+                         id="inlineRadio2" value="false" [checked]="serviceEdit?.isAvailable == false">
+                  <label class="form-check-label" for="inlineRadio2">Not available</label>
+                </div>
+              </div>
+              <mat-error *ngFor="let validator of validateMessage.isAvailable">
+                <mat-error *ngIf="editForm.get('isAvailable').hasError(validator.type)
+                && editForm.get('isAvailable').touched">{{validator.message}}</mat-error>
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" hidden>
+          <input type="text" formControlName="isDeleted">
+        </div>
+        <!--button-->
+        <div class="d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-dark m-1">
+            <a routerLink="/services/list" class="text-decoration-none text-white">Back</a>
+          </button>
+          <button type="submit" class="btn btn-primary m-1">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

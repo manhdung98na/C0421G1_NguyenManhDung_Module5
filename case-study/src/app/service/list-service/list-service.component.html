@@ -1,7 +1,7 @@
 <div class="container-fluid m-0 p-0">
   <div class="row mt-3">
     <div class="col-12 text-center">
-      <h1>CUSTOMER</h1>
+      <h1>SERVICE</h1>
     </div>
   </div>
   <!--CREATE AND SEARCH-->
@@ -9,16 +9,16 @@
     <!--CREATE-->
     <div class="col-6">
       <button class="btn btn-primary m-2">
-        <a routerLink="/customers/create" class="text-decoration-none text-white">Create</a>
+        <a routerLink="/services/create" class="text-decoration-none text-white">Create</a>
       </button>
     </div>
-    <!--SEARCH    -->
+    <!--SEARCH-->
     <div class="col-6">
       <form class="w-100" [formGroup]="searchForm" (ngSubmit)="search()">
         <div class="input-group" style="float: right; width: 70%">
           <select class="form-control mt-2 mb-2" formControlName="type">
-            <option>Customer Type</option>
-            <option *ngFor="let o of customerType">{{o.name}}</option>
+            <option>Rent Type</option>
+            <option *ngFor="let o of rentType">{{o.name}}</option>
           </select>
           <input type="text" class="form-control mt-2 mb-2 ms-1" placeholder="Search by name here" id="input-search"
                  name="input-search" formControlName="name">
@@ -37,26 +37,26 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Type</th>
-          <th>Gender</th>
-          <th>Id card</th>
+          <th>Rent type</th>
+          <th>Cost</th>
+          <th>Status</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let customer of pageSlice" mat-raised-button>
-          <td (click)="openDialog(customer.id)">{{customer.id}}</td>
-          <td (click)="openDialog(customer.id)">{{customer.name}}</td>
-          <td (click)="openDialog(customer.id)">{{customer.type.name}}</td>
-          <td [ngSwitch]="customer.gender" (click)="openDialog(customer.id)">
-            <span *ngSwitchCase="0">Female</span>
-            <span *ngSwitchCase="1">Male</span>
-            <span *ngSwitchDefault>Other</span>
+        <tr *ngFor="let service of pageSlice" mat-raised-button>
+          <td (click)="openDialog(service.id)">{{service.id}}</td>
+          <td (click)="openDialog(service.id)">{{service.name}}</td>
+          <td (click)="openDialog(service.id)">{{service.rentType.name}}</td>
+          <td (click)="openDialog(service.id)">{{service.cost}}</td>
+          <td (click)="openDialog(service.id)" [textContent]="service.isAvailable ? 'Available' : 'Not available'">
+<!--            <span *ngSwitchCase="0">Female</span>-->
+<!--            <span *ngSwitchCase="1">Male</span>-->
+<!--            <span *ngSwitchDefault>Other</span>-->
           </td>
-          <td (click)="openDialog(customer.id)">{{customer.idCard}}</td>
           <td>
-            <input type="checkbox" (change)="isChecked($event,customer.id)"
-                   [checked]="checkedArr.includes(customer.id)">
+            <input type="checkbox" (change)="isChecked($event,service.id)"
+                   [checked]="checkedArr.includes(service.id)">
           </td>
         </tr>
         </tbody>
@@ -70,7 +70,7 @@
   </div>
   <!--PAGINATION-->
   <div class="d-flex justify-content-center">
-    <mat-paginator class="bg-black bg-opacity-50" [length]="listCustomer.length"
+    <mat-paginator class="bg-black bg-opacity-50" [length]="listServices.length"
                    [pageSize]="pageSize" [pageSizeOptions]="[3, 5, 10, 20]" (page)="changePage($event)"
                    aria-label="Select page">
     </mat-paginator>
@@ -84,7 +84,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Delete Confirm?</h5>
         </div>
         <div class="modal-body">
-          Are you sure to delete customer(s)?
+          Are you sure to delete service(s)?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-confirm-no">No

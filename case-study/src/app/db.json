@@ -39,10 +39,10 @@
         "name": "Platinum"
       },
       "birthday": "1999-10-07",
-      "idCard": "111111111",
-      "phone": "0901111111",
-      "email": "1@1",
-      "address": "1",
+      "idCard": "111111113",
+      "phone": "0901111113",
+      "email": "1@11",
+      "address": "11",
       "isDeleted": false
     },
     {
@@ -201,6 +201,105 @@
     {
       "id": 5,
       "name": "Member"
+    }
+  ],
+  "services": [
+    {
+      "id": "DV-0001",
+      "name": "Dịch Vụ 1",
+      "area": 80,
+      "floors": 2,
+      "maxPeople": 8,
+      "cost": 5000000,
+      "rentType": {
+        "id": 1,
+        "cost": 35000000,
+        "name": "Năm"
+      },
+      "isAvailable": true,
+      "isDeleted": false
+    },
+    {
+      "id": "DV-0002",
+      "name": "D Vụ 2",
+      "area": 60,
+      "floors": 1,
+      "maxPeople": 3,
+      "cost": 2500000,
+      "rentType": {
+        "id": 2,
+        "cost": 300000,
+        "name": "Tháng"
+      },
+      "isAvailable": true,
+      "isDeleted": false
+    },
+    {
+      "id": "DV-0003",
+      "floors": 1,
+      "area": 28,
+      "cost": 100000,
+      "maxPeople": 3,
+      "name": "Dịch vụ 3",
+      "rentType": {
+        "id": 3,
+        "cost": 150000,
+        "name": "Ngày"
+      },
+      "isAvailable": true,
+      "isDeleted": true
+    },
+    {
+      "id": "DV-0004",
+      "name": "Dịch vụ 4",
+      "area": 1,
+      "floors": 1,
+      "maxPeople": 1,
+      "cost": 1,
+      "rentType": {
+        "id": 1,
+        "cost": 35000000,
+        "name": "Năm"
+      },
+      "isAvailable": true,
+      "isDeleted": true
+    },
+    {
+      "id": "DV-0005",
+      "name": "12",
+      "area": 12,
+      "floors": 12,
+      "maxPeople": 12,
+      "cost": 12,
+      "rentType": {
+        "id": 2,
+        "cost": 300000,
+        "name": "Tháng"
+      },
+      "isAvailable": true,
+      "isDeleted": false
+    }
+  ],
+  "rentTypes": [
+    {
+      "id": 1,
+      "cost": 35000000,
+      "name": "Năm"
+    },
+    {
+      "id": 2,
+      "cost": 300000,
+      "name": "Tháng"
+    },
+    {
+      "id": 3,
+      "cost": 150000,
+      "name": "Ngày"
+    },
+    {
+      "id": 4,
+      "cost": 80000,
+      "name": "Giờ"
     }
   ]
 }

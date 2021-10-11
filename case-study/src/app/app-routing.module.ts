@@ -1,18 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ListCustomerComponent} from './customer/list-customer/list-customer.component';
 import {CreateCustomerComponent} from './customer/create-customer/create-customer.component';
-import {DetailCustomerComponent} from './customer/detail-customer/detail-customer.component';
 import {EditCustomerComponent} from './customer/edit-customer/edit-customer.component';
-
+import {ListServiceComponent} from './service/list-service/list-service.component';
+import {CreateServiceComponent} from './service/create-service/create-service.component';
+import {EditServiceComponent} from './service/edit-service/edit-service.component';
 
 const routes: Routes = [
-  {path: 'customers/list', component: ListCustomerComponent,
-    // loadChildren:() => import('./customer/customer.module').then(module => module.CustomerModule)
-  },
+  {path: 'customers/list', component: ListCustomerComponent},
   {path: 'customers/create', component: CreateCustomerComponent},
-  {path: 'customers/detail/:id', component: DetailCustomerComponent},
   {path: 'customers/edit/:id', component: EditCustomerComponent},
+
+  {path: 'services/list', component: ListServiceComponent},
+  {path: 'services/create', component: CreateServiceComponent},
+  {path: 'services/edit/:id', component: EditServiceComponent},
 ];
 
 @NgModule({
