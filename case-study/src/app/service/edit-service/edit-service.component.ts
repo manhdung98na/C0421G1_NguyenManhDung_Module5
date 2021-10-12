@@ -67,27 +67,31 @@ export class EditServiceComponent implements OnInit {
       this.serviceService.findById(id).subscribe(next => {
         this.serviceEdit = next[0];
         this.editForm.setValue(this.serviceEdit);
-      },error => {
+      }, error => {
         console.log(error);
       });
     });
   }
 
   editService() {
-      this.serviceEdit = this.editForm.value;
-      if (this.editForm.value.isAvailable == 'true') {
-        this.serviceEdit.isAvailable = true;
-      } else if (this.editForm.value.isAvailable == 'false') {
-        this.serviceEdit.isAvailable = false;
-      } else {
-        return;
-      }
-      this.serviceService.update(this.serviceEdit).subscribe(next => {
-        this.router.navigateByUrl('/services/list');
-        this.notification.showNotification('Success!', 'Done', 'success');
-      }, error => {
-        this.notification.showNotification('Error!', 'OK', 'error');
-        console.log(error);
-      });
+    if (this.editForm.invalid) {
+      this.notification.showNotification('Không thành công!', 'OK', 'error');
+      return;
+    }
+    this.serviceEdit = this.editForm.value;
+    if (this.editForm.value.isAvailable == 'true') {
+      this.serviceEdit.isAvailable = true;
+    } else if (this.editForm.value.isAvailable == 'false') {
+      this.serviceEdit.isAvailable = false;
+    } else {
+      return;
+    }
+    this.serviceService.update(this.serviceEdit).subscribe(next => {
+      this.router.navigateByUrl('/services/list');
+      this.notification.showNotification('Success!', 'Done', 'success');
+    }, error => {
+      this.notification.showNotification('Error!', 'OK', 'error');
+      console.log(error);
+    });
   }
 }

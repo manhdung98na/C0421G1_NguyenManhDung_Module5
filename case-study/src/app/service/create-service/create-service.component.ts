@@ -69,6 +69,10 @@ export class CreateServiceComponent implements OnInit {
   }
 
   createNewService() {
+    if (this.createForm.invalid) {
+      this.notification.showNotification('Không thành công!', 'OK', 'error');
+      return;
+    }
     let message = '';
     this.serviceService.getAll().subscribe(next => {
       let checkIdDuplicated = next.find(obj => obj.id == this.createForm.value.id);

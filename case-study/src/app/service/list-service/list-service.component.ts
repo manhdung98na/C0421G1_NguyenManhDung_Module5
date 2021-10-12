@@ -8,6 +8,7 @@ import {RentType} from '../model/rent-type';
 import {ServiceService} from '../service/service.service';
 import {RentTypeService} from '../service/rent-type.service';
 import {DetailServiceComponent} from '../detail-service/detail-service.component';
+import {NotificationService} from '../../shared/notification.service';
 
 @Component({
   selector: 'app-list-service',
@@ -28,7 +29,8 @@ export class ListServiceComponent implements OnInit {
   constructor(private serviceService: ServiceService,
               private rentTypeService: RentTypeService,
               private router: Router,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private notification: NotificationService) {
 
   }
 
@@ -98,7 +100,11 @@ export class ListServiceComponent implements OnInit {
     } else {
       this.serviceService.search(typeSearch, nameSearch).subscribe(next => {
         this.listServices = next;
-        this.pageSlice = this.listServices.slice(0, this.pageSize);
+        if (this.listServices.length == 0){
+          this.notification.showNotification("Không tìm thấy kết quả", 'OK', 'error');
+        }else {
+          this.pageSlice = this.listServices.slice(0, this.pageSize);
+        }
       });
     }
   }

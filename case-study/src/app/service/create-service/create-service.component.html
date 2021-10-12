@@ -58,7 +58,11 @@
           <!--COST-->
           <div class="form-group col-md-3">
             <label for="service-cost" class="mt-2">Cost</label>
-            <input type="number" class="form-control mb-1" id="service-cost" formControlName="cost" required>
+            <div class="input-group">
+              <input type="number" min="0" id="service-cost" class="form-control mb-1"
+                     aria-describedby="basic-addon2" formControlName="cost" required>
+              <span class="input-group-text" style="height: 38px">VND</span>
+            </div>
             <mat-error *ngFor="let validator of validateMessage.cost">
               <mat-error *ngIf="createForm.get('cost').hasError(validator.type)
                 && createForm.get('cost').touched">{{validator.message}}</mat-error>
