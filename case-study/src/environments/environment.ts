@@ -6,8 +6,14 @@ export const environment = {
   production: false,
   customerUrl: "http://localhost:3000/customers",
   customerTypeUrl: "http://localhost:3000/customerType",
+
   serviceUrl: "http://localhost:3000/services",
   rentTpeUrl: "http://localhost:3000/rentTypes",
+
+  divisionUrl: "http://localhost:3000/divisions",
+  positionUrl: "http://localhost:3000/positions",
+  educationDegreeUrl: "http://localhost:3000/educationDegrees",
+  employeeUrl: "http://localhost:3000/employees",
 };
 
 /*

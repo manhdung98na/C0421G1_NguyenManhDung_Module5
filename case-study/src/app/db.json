@@ -9,10 +9,10 @@
         "name": "Diamond"
       },
       "birthday": "2001-01-05",
-      "idCard": "147147147",
-      "phone": "0901471471",
-      "email": "t.ha@gmail.com",
-      "address": "Buôn Mê Thuộtt",
+      "idCard": "147147146",
+      "phone": "0901471473",
+      "email": "thu.ha@gmail.com",
+      "address": "Buôn Mê Thuột",
       "isDeleted": false
     },
     {
@@ -203,6 +203,7 @@
       "name": "Member"
     }
   ],
+
   "services": [
     {
       "id": "DV-0001",
@@ -267,16 +268,31 @@
     {
       "id": "DV-0005",
       "name": "12",
-      "area": 12,
-      "floors": 12,
-      "maxPeople": 12,
-      "cost": 12,
+      "area": 46,
+      "floors": 1,
+      "maxPeople": 4,
+      "cost": 3000000,
       "rentType": {
         "id": 2,
         "cost": 300000,
         "name": "Tháng"
       },
-      "isAvailable": true,
+      "isAvailable": false,
+      "isDeleted": false
+    },
+    {
+      "id": "DV-0006",
+      "name": "Dịch vụ 4",
+      "area": 80,
+      "floors": 3,
+      "maxPeople": 5,
+      "cost": 5000000,
+      "rentType": {
+        "id": 2,
+        "cost": 300000,
+        "name": "Tháng"
+      },
+      "isAvailable": false,
       "isDeleted": false
     }
   ],
@@ -301,5 +317,71 @@
       "cost": 80000,
       "name": "Giờ"
     }
+  ],
+
+  "divisions": [
+    {
+      "id" : 1,
+      "name" : "Sale - Marketing"
+    },
+    {
+      "id" : 2,
+      "name" : "Hành chính"
+    },
+    {
+      "id" : 3,
+      "name" : "Phục vụ"
+    },
+    {
+      "id" : 4,
+      "name" : "Quản lý"
+    }
+  ],
+  "positions": [
+    {
+      "id" : 1,
+      "name" : "Lễ tân"
+    },
+    {
+      "id" : 2,
+      "name" : "Phục vụ"
+    },
+    {
+      "id" : 3,
+      "name" : "Chuyên viên"
+    },
+    {
+      "id" : 4,
+      "name" : "Giám sát"
+    },
+    {
+      "id" : 5,
+      "name" : "Quản lý"
+    },
+    {
+      "id" : 6,
+      "name" : "Giám đốc"
+    }
+  ],
+  "educationDegrees": [
+    {
+      "id" : 1,
+      "name" : "Trung cấp"
+    },
+    {
+      "id" : 2,
+      "name" : "Cao đẳng"
+    },
+    {
+      "id" : 3,
+      "name" : "Đại học"
+    },
+    {
+      "id" : 4,
+      "name" : "Sau đại học"
+    }
+  ],
+  "employees": [
+
   ]
 }

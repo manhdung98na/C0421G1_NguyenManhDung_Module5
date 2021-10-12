@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {CustomerModule} from './customer/customer.module';
 import {ServiceModule} from './service/service.module';
+import {EmployeeModule} from './employee/employee.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {ServiceModule} from './service/service.module';
     SharedModule,
     CustomerModule,
     ServiceModule,
+    EmployeeModule,
     AppRoutingModule,
   ],
   providers: [],

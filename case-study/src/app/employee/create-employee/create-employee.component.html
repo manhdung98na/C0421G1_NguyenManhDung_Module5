@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <div class="row text-center mt-5">
+    <h3>CREATE NEW EMPLOYEE</h3>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <form style="width: 60vw" [formGroup]="createForm" (ngSubmit)="createNewEmployee()">
+        <div class="row">
+          <!--ID-->
+          <div class="form-group col-md-6">
+            <label for="employee-id" class="form-label mt-2">ID</label>
+            <input type="text" class="form-control mb-1" id="employee-id" formControlName="id" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.id">
+              <mat-error *ngIf="createForm.get('id').hasError(validator.type)
+                && createForm.get('id').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <!--NAME-->
+          <div class="form-group col-md-6">
+            <label for="employee-name" class="form-label mt-2">Name</label>
+            <input type="text" class="form-control mb-1" id="employee-name" formControlName="name" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.name">
+              <mat-error *ngIf="createForm.get('name').hasError(validator.type)
+                && createForm.get('name').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <!--DIVISION, POSITION, EDUCATION-->
+        <div class="row">
+          <!--DIVISION-->
+          <div class="form-group col-md-4">
+            <label for="employee-division" class="form-label mt-2">Division</label>
+            <select class="form-select mb-1" id="employee-division" formControlName="division" required>
+              <option *ngFor="let type of divisions" [selected]="type.id == createForm.controls.division.value.id"
+                      [ngValue]="type" [text]="type.name"></option>
+            </select>
+          </div>
+          <!--POSITION-->
+          <div class="form-group col-md-4">
+            <label for="employee-position" class="form-label mt-2">Position</label>
+            <select class="form-select mb-1" id="employee-position" formControlName="position" required>
+              <option *ngFor="let type of positions" [selected]="type.id == createForm.controls.position.value.id"
+                      [ngValue]="type" [text]="type.name"></option>
+            </select>
+          </div>
+          <!--EDUCATION-->
+          <div class="form-group col-md-4">
+            <label for="employee-education" class="form-label mt-2">Education Degree</label>
+            <select class="form-select mb-1" id="employee-education" formControlName="educationDegree" required>
+              <option *ngFor="let type of educationDegrees"
+                      [selected]="type.id == createForm.controls.educationDegree.value.id"
+                      [ngValue]="type" [text]="type.name"></option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <!--BIRTHDAY-->
+          <div class="form-group col-md-3">
+            <label for="employee-birthday" class="form-label mt-2">Birthday</label>
+            <input type="date" class="form-control mb-1" id="employee-birthday" formControlName="birthday" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.birthday">
+              <mat-error *ngIf="createForm.get('birthday').hasError(validator.type)
+                && createForm.get('birthday').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <!--ID CARD-->
+          <div class="form-group col-md-3">
+            <label for="employee-id-card" class="form-label mt-2">ID Card</label>
+            <input type="text" class="form-control mb-1" id="employee-id-card" formControlName="idCard" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.idCard">
+              <mat-error *ngIf="createForm.get('idCard').hasError(validator.type)
+                && createForm.get('idCard').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <!--EMAIL-->
+          <div class="form-group col-md-6">
+            <label for="employee-email" class="form-label mt-2">Email</label>
+            <input type="text" class="form-control mb-1" id="employee-email" formControlName="email" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.email">
+              <mat-error *ngIf="createForm.get('email').hasError(validator.type)
+                && createForm.get('email').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <div class="row">
+          <!--SALARY-->
+          <div class="form-group col-md-3">
+            <label for="employee-salary" class="form-label mt-2">Salary</label>
+            <div class="input-group">
+              <input type="number" min="0" id="employee-salary" class="form-control mb-1"
+                     aria-describedby="basic-addon2" formControlName="salary" required>
+              <span class="input-group-text" style="height: 38px">VND</span>
+            </div>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.salary">
+              <mat-error *ngIf="createForm.get('salary').hasError(validator.type)
+                && createForm.get('salary').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <!--PHONE-->
+          <div class="form-group col-md-3">
+            <label for="employee-phone" class="form-label mt-2">Phone</label>
+            <input type="text" class="form-control mb-1" id="employee-phone" formControlName="phone" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.phone">
+              <mat-error *ngIf="createForm.get('phone').hasError(validator.type)
+                && createForm.get('phone').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <!--ADDRESS-->
+          <div class="form-group col-md-6">
+            <label for="employee-address" class="form-label mt-2">Address</label>
+            <input type="text" class="form-control mb-1" id="employee-address" formControlName="address" required>
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.address">
+              <mat-error *ngIf="createForm.get('address').hasError(validator.type)
+                && createForm.get('address').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <!--button-->
+        <div class="d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-dark m-1">
+            <a routerLink="/employees/list" class="text-decoration-none text-white">Back</a>
+          </button>
+          <button type="submit" class="btn btn-primary m-1" >Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
