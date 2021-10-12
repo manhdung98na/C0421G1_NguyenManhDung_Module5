@@ -3,6 +3,7 @@ import {Customer} from '../model/customer';
 import {CustomerType} from '../model/customer-type';
 import {CustomerService} from '../service/customer.service';
 import {CustomerTypeService} from '../service/customer-type.service';
+import {NotificationService} from '../../shared/notification.service';
 import {MatDialog} from '@angular/material/dialog';
 import {DetailCustomerComponent} from '../detail-customer/detail-customer.component';
 import {Router} from '@angular/router';
@@ -28,7 +29,8 @@ export class ListCustomerComponent implements OnInit {
   constructor(private customerService: CustomerService,
               private customerTypeService: CustomerTypeService,
               private router: Router,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private notification: NotificationService) {
 
   }
 
@@ -98,7 +100,11 @@ export class ListCustomerComponent implements OnInit {
     } else {
       this.customerService.search(typeSearch, nameSearch).subscribe(next => {
         this.listCustomer = next;
-        this.pageSlice = this.listCustomer.slice(0, this.pageSize);
+        if(this.listCustomer.length == 0){
+          this.notification.showNotification("Không tìm thấy kết quả", 'OK', 'error');
+        }else {
+          this.pageSlice = this.listCustomer.slice(0, this.pageSize);
+        }
       });
     }
   }

@@ -82,6 +82,10 @@ export class EditCustomerComponent implements OnInit {
   }
 
   editCustomer() {
+    if (this.editForm.invalid) {
+      this.notification.showNotification('Không thành công!', 'OK', 'error');
+      return;
+    }
     let id = this.editForm.value.id;
     let message = '';
     this.customerService.getAllAvailable().subscribe(next => {

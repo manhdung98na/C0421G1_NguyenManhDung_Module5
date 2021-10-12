@@ -76,6 +76,10 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   createNewCustomer() {
+    if (this.createForm.invalid) {
+      this.notification.showNotification('Không thành công!', 'OK', 'error');
+      return;
+    }
     let message = '';
     this.customerService.getAll().subscribe(next => {
       let checkIdDuplicated = next.find(obj => obj.id == this.createForm.value.id);
