@@ -44,7 +44,7 @@
             <label for="customer-type" class="mt-2">Type</label>
             <select class="form-select mb-1" id="customer-type" formControlName="type" required>
               <option *ngFor="let type of customerType" [ngValue]="type" [text]="type.name"
-              [selected]="type.id == customerEdit?.type.id"></option>
+                      [selected]="type.id == customerEdit?.type.id"></option>
             </select>
             <mat-error *ngFor="let validator of validateMessage.type">
               <mat-error *ngIf="editForm.get('type').hasError(validator.type)
@@ -100,7 +100,7 @@
           </mat-error>
         </div>
         <div class="form-group" hidden>
-          <input type="text" formControlName="isDeleted" >
+          <input type="text" formControlName="isDeleted">
 
         </div>
         <!--button-->

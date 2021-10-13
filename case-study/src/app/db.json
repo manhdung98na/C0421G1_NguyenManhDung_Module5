@@ -203,7 +203,6 @@
       "name": "Member"
     }
   ],
-
   "services": [
     {
       "id": "DV-0001",
@@ -318,70 +317,91 @@
       "name": "Giờ"
     }
   ],
-
   "divisions": [
     {
-      "id" : 1,
-      "name" : "Sale - Marketing"
+      "id": 1,
+      "name": "Sale - Marketing"
     },
     {
-      "id" : 2,
-      "name" : "Hành chính"
+      "id": 2,
+      "name": "Hành chính"
     },
     {
-      "id" : 3,
-      "name" : "Phục vụ"
+      "id": 3,
+      "name": "Phục vụ"
     },
     {
-      "id" : 4,
-      "name" : "Quản lý"
+      "id": 4,
+      "name": "Quản lý"
     }
   ],
   "positions": [
     {
-      "id" : 1,
-      "name" : "Lễ tân"
+      "id": 1,
+      "name": "Lễ tân"
     },
     {
-      "id" : 2,
-      "name" : "Phục vụ"
+      "id": 2,
+      "name": "Phục vụ"
     },
     {
-      "id" : 3,
-      "name" : "Chuyên viên"
+      "id": 3,
+      "name": "Chuyên viên"
     },
     {
-      "id" : 4,
-      "name" : "Giám sát"
+      "id": 4,
+      "name": "Giám sát"
     },
     {
-      "id" : 5,
-      "name" : "Quản lý"
+      "id": 5,
+      "name": "Quản lý"
     },
     {
-      "id" : 6,
-      "name" : "Giám đốc"
+      "id": 6,
+      "name": "Giám đốc"
     }
   ],
   "educationDegrees": [
     {
-      "id" : 1,
-      "name" : "Trung cấp"
+      "id": 1,
+      "name": "Trung cấp"
     },
     {
-      "id" : 2,
-      "name" : "Cao đẳng"
+      "id": 2,
+      "name": "Cao đẳng"
     },
     {
-      "id" : 3,
-      "name" : "Đại học"
+      "id": 3,
+      "name": "Đại học"
     },
     {
-      "id" : 4,
-      "name" : "Sau đại học"
+      "id": 4,
+      "name": "Sau đại học"
     }
   ],
   "employees": [
-
+    {
+      "id": "NV-0001",
+      "name": "A",
+      "division": {
+        "id": 1,
+        "name": "Sale - Marketing"
+      },
+      "position": {
+        "id": 1,
+        "name": "Lễ tân"
+      },
+      "educationDegree": {
+        "id": 1,
+        "name": "Trung cấp"
+      },
+      "birthday": "1998-10-13",
+      "idCard": "145201202",
+      "salary": 8000000,
+      "phone": "0901485236",
+      "email": "mdunh@mail.com",
+      "address": "Nghệ An",
+      "isDeleted": false
+    }
   ]
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NotificationService} from '../../shared/notification.service';
 import {Employee} from '../model/employee';
@@ -61,7 +61,21 @@ export class CreateEmployeeComponent implements OnInit {
               private educationService: EducationDegreeService,
               private employeeService: EmployeeService,
               private router: Router,
-              private notification: NotificationService) {
+              private notification: NotificationService,
+              private formBuilder: FormBuilder) {
+    this.createForm = this.formBuilder.group({
+      id: ['NV-', Validators.compose([Validators.required, Validators.pattern('NV-[0-9]{4}')])],
+      name: ['', Validators.compose([Validators.required, Validators.pattern('^[A-Z][a-z]*(\s[A-Z][a-z]*)*$')])],
+      division: '',
+      position: '',
+      educationDegree: '',
+      birthday: ['', Validators.required],
+      idCard: ['', Validators.compose([Validators.required, Validators.pattern('([0-9]{9}|[0-9]{12})')])],
+      salary: ['', [Validators.required, Validators.min(1)]],
+      phone: ['', Validators.compose([Validators.required, Validators.pattern('(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}')])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      address: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
@@ -71,21 +85,8 @@ export class CreateEmployeeComponent implements OnInit {
         this.divisions = n;
         this.educationService.getAll().subscribe(n => {
           this.educationDegrees = n;
-          this.createForm = new FormGroup({
-            id: new FormControl('NV-', Validators.compose([Validators.required, Validators.pattern('NV-[0-9]{4}')])),
-            name: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[A-Z][a-z]*(\s[A-Z][a-z]*)*$')])),
-            division: new FormControl(this.divisions[0]),
-            position: new FormControl(this.positions[0]),
-            educationDegree: new FormControl(this.educationDegrees[0]),
-            birthday: new FormControl('', Validators.required),
-            idCard: new FormControl('', Validators.compose([Validators.required, Validators.pattern('([0-9]{9}|[0-9]{12})')])),
-            salary: new FormControl('', [Validators.required, Validators.min(1)]),
-            phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern('(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}')])),
-            email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-            address: new FormControl('', Validators.required)
-          });
-        })
-      })
+        });
+      });
     });
   }
 

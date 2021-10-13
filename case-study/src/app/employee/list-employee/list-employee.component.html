@@ -1,1 +1,96 @@
-<p>list-employee works!</p>
+<div class="container-fluid m-0 p-0">
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <h1>EMPLOYEE</h1>
+    </div>
+  </div>
+  <!--CREATE AND SEARCH-->
+  <div class="row">
+    <!--CREATE-->
+    <div class="col-6">
+      <button class="btn btn-primary m-2">
+        <a routerLink="/employees/create" class="text-decoration-none text-white">Create</a>
+      </button>
+    </div>
+    <!--SEARCH    -->
+    <div class="col-6">
+      <form class="w-100" [formGroup]="searchForm" (ngSubmit)="search()">
+        <div class="input-group" style="float: right; width: 70%">
+          <select class="form-control mt-2 mb-2" formControlName="type">
+            <option>Customer Type</option>
+            <option *ngFor="let o of positions">{{o.name}}</option>
+          </select>
+          <input type="text" class="form-control mt-2 mb-2 ms-1" placeholder="Search by name here" id="input-search"
+                 name="input-search" formControlName="name">
+          <button class="btn btn-outline-secondary mt-2 mb-2 me-2" type="submit" id="button-addon2">Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--LIST-->
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Id card</th>
+          <th>Division</th>
+          <th>Position</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of pageSlice" mat-raised-button>
+          <td (click)="openDialog(employee.id)">{{employee.id}}</td>
+          <td (click)="openDialog(employee.id)">{{employee.name}}</td>
+          <td (click)="openDialog(employee.id)">{{employee.idCard}}</td>
+          <td (click)="openDialog(employee.id)">{{employee.division.name}}</td>
+          <td (click)="openDialog(employee.id)">{{employee.position.name}}</td>
+          <td>
+            <input type="checkbox" (change)="isChecked($event,employee.id)"
+                   [checked]="checkedArr.includes(employee.id)">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--Multiple delete-->
+      <button class="btn btn-danger d-flex float-end w-auto" style="right: 16px" id="btn-multi-delete"
+              data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Delete
+      </button>
+    </div>
+  </div>
+  <!--PAGINATION-->
+  <div class="d-flex justify-content-center">
+    <mat-paginator class="bg-black bg-opacity-50" [length]="listEmployees.length"
+                   [pageSize]="pageSize" [pageSizeOptions]="[3, 5, 10, 20]" (page)="changePage($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <!--MODAL-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+       data-bs-keyboard="false" aria-labelledby="staticBackdropLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirm?</h5>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete employee(s)?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-confirm-no">No
+          </button>
+          <button type="button" class="btn btn-danger" id="btn-confirm-yes" data-bs-dismiss="modal" (click)="delete()">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Hết model-->
+</div>

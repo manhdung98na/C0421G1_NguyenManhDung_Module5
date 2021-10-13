@@ -5,54 +5,57 @@
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <form style="width: 60vw" [formGroup]="createForm" (ngSubmit)="createNewEmployee()">
+        <!--ID, NAME-->
         <div class="row">
           <!--ID-->
           <div class="form-group col-md-6">
-            <label for="employee-id" class="form-label mt-2">ID</label>
+            <label for="employee-id" class="form-label mt-2">ID Card</label>
             <input type="text" class="form-control mb-1" id="employee-id" formControlName="id" required>
-            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.id">
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.idCard">
               <mat-error *ngIf="createForm.get('id').hasError(validator.type)
                 && createForm.get('id').touched">{{validator.message}}</mat-error>
             </mat-error>
           </div>
           <!--NAME-->
           <div class="form-group col-md-6">
-            <label for="employee-name" class="form-label mt-2">Name</label>
+            <label for="employee-name" class="form-label mt-2">ID Card</label>
             <input type="text" class="form-control mb-1" id="employee-name" formControlName="name" required>
-            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.name">
+            <mat-error style="font-size: small" *ngFor="let validator of validateMessage.idCard">
               <mat-error *ngIf="createForm.get('name').hasError(validator.type)
                 && createForm.get('name').touched">{{validator.message}}</mat-error>
             </mat-error>
           </div>
         </div>
+
         <!--DIVISION, POSITION, EDUCATION-->
         <div class="row">
           <!--DIVISION-->
           <div class="form-group col-md-4">
             <label for="employee-division" class="form-label mt-2">Division</label>
             <select class="form-select mb-1" id="employee-division" formControlName="division" required>
-              <option *ngFor="let type of divisions" [selected]="type.id == createForm.controls.division.value.id"
-                      [ngValue]="type" [text]="type.name"></option>
+              <option selected>--Choose division--</option>
+              <option *ngFor="let type of divisions" [ngValue]="type" [text]="type.name"></option>
             </select>
           </div>
           <!--POSITION-->
           <div class="form-group col-md-4">
             <label for="employee-position" class="form-label mt-2">Position</label>
             <select class="form-select mb-1" id="employee-position" formControlName="position" required>
-              <option *ngFor="let type of positions" [selected]="type.id == createForm.controls.position.value.id"
-                      [ngValue]="type" [text]="type.name"></option>
+              <option selected>--Choose position--</option>
+              <option *ngFor="let type of positions" [ngValue]="type" [text]="type.name"></option>
             </select>
           </div>
           <!--EDUCATION-->
           <div class="form-group col-md-4">
             <label for="employee-education" class="form-label mt-2">Education Degree</label>
             <select class="form-select mb-1" id="employee-education" formControlName="educationDegree" required>
-              <option *ngFor="let type of educationDegrees"
-                      [selected]="type.id == createForm.controls.educationDegree.value.id"
-                      [ngValue]="type" [text]="type.name"></option>
+              <option selected>--Choose education--</option>
+              <option *ngFor="let type of educationDegrees" [ngValue]="type" [text]="type.name"></option>
             </select>
           </div>
         </div>
+
+        <!--BIRTHDAY, ID CARD, EMAIL-->
         <div class="row">
           <!--BIRTHDAY-->
           <div class="form-group col-md-3">
@@ -82,6 +85,8 @@
             </mat-error>
           </div>
         </div>
+
+        <!--SALARY, PHONE, ADDRESS-->
         <div class="row">
           <!--SALARY-->
           <div class="form-group col-md-3">
@@ -115,12 +120,13 @@
             </mat-error>
           </div>
         </div>
+
         <!--button-->
         <div class="d-flex justify-content-center mt-3">
           <button type="button" class="btn btn-dark m-1">
             <a routerLink="/employees/list" class="text-decoration-none text-white">Back</a>
           </button>
-          <button type="submit" class="btn btn-primary m-1" >Create</button>
+          <button type="submit" class="btn btn-primary m-1">Create</button>
         </div>
       </form>
     </div>
