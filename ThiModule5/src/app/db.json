@@ -1,98 +1,74 @@
 {
-  "showtimes": [
+  "cores": [
     {
-      "id": "CI-0001",
-      "movie": {
-        "id": 1,
-        "name": "Fast and Furious"
-      },
-      "date": "2021-11-05",
-      "tickets": 60,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0002",
-      "movie": {
-        "id": 1,
-        "name": "Fast and Furious"
-      },
-      "date": "2021-11-06",
-      "tickets": 50,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0003",
-      "movie": {
-        "id": 3,
-        "name": "Finding Nemo"
-      },
-      "date": "2021-10-08",
-      "tickets": 11,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0009",
-      "movie": {
+      "id": 1235,
+      "typeCar": {
         "id": 2,
-        "name": "The Conjuring"
+        "name": "Ghế ngồi"
       },
-      "date": "2021-10-02",
-      "tickets": 111,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0008",
-      "movie": {
-        "id": 1,
-        "name": "Fast and Furious"
-      },
-      "date": "2021-10-02",
-      "tickets": 1,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0006",
-      "movie": {
-        "id": 1,
-        "name": "Fast and Furious"
-      },
-      "date": "2021-10-09",
-      "tickets": 111,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0007",
-      "movie": {
-        "id": 3,
-        "name": "Finding Nemo"
-      },
-      "date": "2021-09-30",
-      "tickets": 111,
-      "isDeleted": false
-    },
-    {
-      "id": "CI-0004",
-      "movie": {
-        "id": 1,
-        "name": "Fast and Furious"
-      },
-      "date": "2021-11-25",
-      "tickets": 1,
+      "nameCar": "Hoà Minh",
+      "startPlace": "Nghệ An",
+      "endPlace": "Hà Nội",
+      "phone": "0931234567",
+      "email": "a1@a.com",
+      "timeStart": "05:30",
+      "timeEnd": "22:59",
       "isDeleted": true
+    },
+    {
+      "id": 1234,
+      "typeCar": {
+        "id": 1,
+        "name": "Giường nằm"
+      },
+      "nameCar": "Hoà Minh",
+      "startPlace": "Nghệ An",
+      "endPlace": "Hà Nội",
+      "phone": "0931234567",
+      "email": "mail@com",
+      "timeStart": "05:30",
+      "timeEnd": "12:59",
+      "isDeleted": true
+    },
+    {
+      "id": 1233,
+      "typeCar": {
+        "id": 2,
+        "name": "Ghế ngồi"
+      },
+      "nameCar": "Hoà Minh",
+      "startPlace": "Nghệ An",
+      "endPlace": "Hà Nội",
+      "phone": "0931234567",
+      "email": "a1@a.com",
+      "timeStart": "05:30",
+      "timeEnd": "22:59",
+      "isDeleted": true
+    },
+    {
+      "id": 1236,
+      "typeCar": {
+        "id": 1,
+        "name": "Giường nằm"
+      },
+      "nameCar": "Xe khách Nghệ An",
+      "startPlace": "Nghệ An",
+      "endPlace": "Sài Gòn",
+      "phone": "0901000000",
+      "email": "xekhachnghean@mail.com",
+      "timeStart": "10:00",
+      "timeEnd": "11:00",
+      "isDeleted": false
     }
   ],
-  "movies": [
+  "typeCars": [
     {
       "id": 1,
-      "name": "Fast and Furious"
+      "name": "Giường nằm"
     },
     {
       "id": 2,
-      "name": "The Conjuring"
-    },
-    {
-      "id": 3,
-      "name": "Finding Nemo"
+      "name": "Ghế ngồi"
     }
   ]
 }

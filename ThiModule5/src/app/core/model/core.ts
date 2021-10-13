@@ -1,9 +1,14 @@
 import {Part} from './part';
 
 export interface Core {
-  id: string,
-  movie: Part,
-  date: string,
-  tickets: number,
+  id: number,
+  typeCar: Part,
+  nameCar: string
+  startPlace: string,
+  endPlace: string,
+  phone: string,
+  email: string,
+  timeStart: string,
+  timeEnd: string,
   isDeleted: boolean
 }

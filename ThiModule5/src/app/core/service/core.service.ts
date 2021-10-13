@@ -36,14 +36,15 @@ export class CoreService {
     return this.httpClient.delete(this.url + '/' + id);
   }
 
-  search(type?: string, id?: string): Observable<any> {
+  search(type: string, content: string): Observable<any> {
     let sql = '';
-    if (type != null && id != null) {
-      sql = this.url + '?id_like=' + id + '&movie.name=' + type + "&isDeleted=false&_sort=id&_order=asc";
-    } else if (type == null) {
-      sql = this.url + '?id_like=' + id + "&isDeleted=false&_sort=id&_order=asc";
-    } else {
-      sql = this.url + '?movie.name=' + type + "&isDeleted=false&_sort=id&_order=asc";
+    switch (type) {
+      case 'id':
+        sql = this.url + '?id=' + content + "&isDeleted=false&_sort=id&_order=asc";
+        break;
+      case 'name':
+        sql = this.url + '?tickets_like=' + content + "&isDeleted=false&_sort=id&_order=asc";
+        break;
     }
     return this.httpClient.get(sql);
   }

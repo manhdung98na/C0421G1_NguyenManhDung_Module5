@@ -8,7 +8,7 @@
         <div class="row">
           <!--ID-->
           <div class="form-group col-md-6">
-            <label for="showtime-id" class="form-label mt-2">ID</label>
+            <label for="showtime-id" class="form-label mt-2">Số xe</label>
             <input type="text" class="form-control mb-1" id="showtime-id" formControlName="id" required>
             <mat-error *ngFor="let validator of validateMessage.id">
               <mat-error *ngIf="createForm.get('id').hasError(validator.type)
@@ -17,7 +17,7 @@
           </div>
           <!--MOVIE-->
           <div class="form-group col-md-6">
-            <label for="showtime-movie" class="mt-2">Movie</label>
+            <label for="showtime-movie" class="mt-2">Part</label>
             <select class="form-select mb-1" id="showtime-movie" formControlName="movie" required>
               <option *ngFor="let type of movies" [selected]="type.id == createForm.controls.movie.value.id"
                       [ngValue]="type" [text]="type.name"></option>
@@ -37,7 +37,8 @@
           <!--TICKETS-->
           <div class="form-group col-md-6">
             <label for="showtime-id-card" class="mt-2">Tickets</label>
-            <input type="number" min="1" class="form-control mb-1" id="showtime-id-card" formControlName="tickets" required>
+            <input type="number" min="1" class="form-control mb-1" id="showtime-id-card" formControlName="tickets"
+                   required>
             <mat-error *ngFor="let validator of validateMessage.tickets">
               <mat-error *ngIf="createForm.get('tickets').hasError(validator.type)
                 && createForm.get('tickets').dirty">{{validator.message}}</mat-error>
@@ -46,8 +47,8 @@
         </div>
         <!--button-->
         <div class="d-flex justify-content-center mt-3">
-          <button type="button" class="btn btn-dark m-1">
-            <a routerLink="/showtimes/list" class="text-decoration-none text-white">Back</a>
+          <button type="button" class="btn btn-dark m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Back
           </button>
           <button type="submit" class="btn btn-primary m-1" [disabled]="createForm.invalid">Create</button>
         </div>
@@ -55,3 +56,26 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+     data-bs-keyboard="false" aria-labelledby="staticBackdropLabel">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm?</h5>
+      </div>
+      <div class="modal-body">
+        Back to the list?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-confirm-no">No
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" routerLink="/module5/list">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Hết model-->

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Showtime} from '../model/showtime';
-import {Movie} from '../model/movie';
+import {Core} from '../model/core';
+import {Part} from '../model/part';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MovieService} from '../service/movie.service';
-import {ShowtimeService} from '../service/showtime.service';
+import {PartService} from '../service/part.service';
+import {CoreService} from '../service/core.service';
 import {Router} from '@angular/router';
 import {NotificationService} from '../../shared/notification.service';
 
@@ -13,8 +13,8 @@ import {NotificationService} from '../../shared/notification.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  showtimeCreate: Showtime;
-  movies: Movie[];
+  showtimeCreate: Core;
+  movies: Part[];
   createForm: FormGroup;
   validateMessage = {
     id: [
@@ -31,8 +31,8 @@ export class CreateComponent implements OnInit {
     ]
   };
 
-  constructor(private movieService: MovieService,
-              private showtimeService: ShowtimeService,
+  constructor(private movieService: PartService,
+              private showtimeService: CoreService,
               private router: Router,
               private notification: NotificationService) {
   }
@@ -50,6 +50,10 @@ export class CreateComponent implements OnInit {
   }
 
   createNewShowtime() {
+    if (this.createForm.invalid){
+      this.notification.showNotification('Fail to create!', 'OK', 'error');
+      return;
+    }
     let message = '';
     this.showtimeService.getAll().subscribe(next => {
       let checkIdDuplicated = next.find(obj => obj.id == this.createForm.value.id);
@@ -61,7 +65,7 @@ export class CreateComponent implements OnInit {
       this.showtimeCreate = this.createForm.value;
       this.showtimeCreate.isDeleted = false;
       this.showtimeService.add(this.showtimeCreate).subscribe(next => {
-        this.router.navigateByUrl('/showtimes/list');
+        this.router.navigateByUrl('/module5/list');
         this.notification.showNotification('Success!', 'Done', 'success');
       }, error => {
         this.notification.showNotification('Cant post to Server!', 'OK', 'error');

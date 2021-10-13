@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  showTimesUrl: "http://localhost:3000/showtimes",
-  moviesUrl: "http://localhost:3000/movies",
+  showTimesUrl: "http://localhost:3000/cores",
+  moviesUrl: "http://localhost:3000/typeCars",
 };
 
 /*
