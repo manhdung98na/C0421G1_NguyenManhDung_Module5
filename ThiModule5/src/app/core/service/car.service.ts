@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Core} from '../model/core';
+import {Car} from '../model/car';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoreService {
+export class CarService {
   url = environment.showTimesUrl;
 
   constructor(private httpClient: HttpClient) {
@@ -20,7 +20,7 @@ export class CoreService {
     return this.httpClient.get(this.url);
   }
 
-  add(showtime: Core): Observable<any> {
+  add(showtime: Car): Observable<any> {
     return this.httpClient.post(this.url, showtime);
   }
 
@@ -28,7 +28,7 @@ export class CoreService {
     return this.httpClient.get(this.url + '?id=' + id);
   }
 
-  update(obj: Core): Observable<any> {
+  update(obj: Car): Observable<any> {
     return this.httpClient.put(this.url + '/' + obj.id, obj);
   }
 

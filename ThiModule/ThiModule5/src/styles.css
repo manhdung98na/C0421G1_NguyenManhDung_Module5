@@ -1,0 +1,19 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.error.mat-snack-bar-container{
+  background: black;
+  color: orange;
+}
+
+.success.mat-snack-bar-container{
+  background: black;
+  color: green;
+}

@@ -1,0 +1,136 @@
+<div class="container-fluid">
+  <div class="row text-center mt-5">
+    <h3>CREATE NEW showtime</h3>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <form style="width: 60vw" [formGroup]="createForm" (ngSubmit)="createCar()">
+        <div class="row">
+          <!--ID-->
+          <div class="form-group col-md-4">
+            <label for="showtime-id" class="form-label mb-1">Số xe</label>
+            <input type="text" class="form-control mb-1" id="showtime-id" formControlName="id" required>
+            <mat-error *ngFor="let validator of validateMessage.id">
+              <mat-error *ngIf="createForm.get('id').hasError(validator.type)
+                && createForm.get('id').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <!--Loại xe-->
+          <div class="form-group col-md-4">
+            <label for="showtime-movie" class="mt-2">Loại xe</label>
+            <select class="form-select mb-1" id="showtime-movie" formControlName="type" required>
+              <option *ngFor="let type of carTypes" [selected]="type.id == createForm.controls.type.value.id"
+                      [ngValue]="type" [text]="type.name"></option>
+            </select>
+            <mat-error *ngFor="let validator of validateMessage.type">
+              <mat-error *ngIf="createForm.get('type').hasError(validator.type)
+                && createForm.get('type').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="showtime-birthday" class="mt-2">Tên nhà xe</label>
+            <input type="text" class="form-control mb-1" id="showtime-birthday" formControlName="name" required>
+            <mat-error *ngFor="let validator of validateMessage.name">
+              <mat-error *ngIf="createForm.get('name').hasError(validator.type)
+                && createForm.get('name').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="startPlace" class="mt-2">Điểm đi</label>
+            <select class="form-select mb-1" id="startPlace" formControlName="startPlace" required>
+              <option *ngFor="let type of places" [selected]="type == createForm.controls.startPlace.value"
+                      [value]="type" [text]="type"></option>
+            </select>
+            <mat-error *ngFor="let validator of validateMessage.startPlace">
+              <mat-error *ngIf="createForm.get('startPlace').hasError(validator.type)
+                && createForm.get('startPlace').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="endPlace" class="mt-2">Điểm đến</label>
+            <select class="form-select mb-1" id="endPlace" formControlName="endPlace" required>
+              <option *ngFor="let type of places" [selected]="type == createForm.controls.startPlace.value"
+                      [value]="type" [text]="type"></option>
+            </select>
+            <mat-error *ngFor="let validator of validateMessage.endPlace">
+              <mat-error *ngIf="createForm.get('endPlace').hasError(validator.type)
+                && createForm.get('endPlace').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="timeStart" class="mt-2">Giờ đi</label>
+            <input type="time" class="form-control mb-1" id="timeStart" formControlName="timeStart"
+                   required>
+            <mat-error *ngFor="let validator of validateMessage.timeStart">
+              <mat-error *ngIf="createForm.get('timeStart').hasError(validator.type)
+                && createForm.get('timeStart').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="timeEnd" class="mt-2">Giờ đến</label>
+            <input type="time" class="form-control mb-1" id="timeEnd" formControlName="timeEnd"
+                   required>
+            <mat-error *ngFor="let validator of validateMessage.timeEnd">
+              <mat-error *ngIf="createForm.get('timeEnd').hasError(validator.type)
+                && createForm.get('timeEnd').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="phone" class="mt-2">Số điện thoại</label>
+            <input type="text" class="form-control mb-1" id="phone" formControlName="phone"
+                   required>
+            <mat-error *ngFor="let validator of validateMessage.phone">
+              <mat-error *ngIf="createForm.get('phone').hasError(validator.type)
+                && createForm.get('phone').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email" class="mt-2">Email</label>
+            <input type="text" class="form-control mb-1" id="email" formControlName="email"
+                   required>
+            <mat-error *ngFor="let validator of validateMessage.email">
+              <mat-error *ngIf="createForm.get('email').hasError(validator.type)
+                && createForm.get('email').touched">{{validator.message}}</mat-error>
+            </mat-error>
+          </div>
+        </div>
+        <!--button-->
+        <div class="d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-dark m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Back
+          </button>
+          <button type="submit" class="btn btn-primary m-1">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+     data-bs-keyboard="false" aria-labelledby="staticBackdropLabel">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm?</h5>
+      </div>
+      <div class="modal-body">
+        Back to the list?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-confirm-no">No
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" routerLink="/module5/list">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Hết model-->

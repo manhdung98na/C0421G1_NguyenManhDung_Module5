@@ -1,0 +1,103 @@
+<div class="container-fluid m-0 p-0">
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <h1>Car</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-primary m-2">
+        <a routerLink="/module5/create" class="text-decoration-none text-white">Create</a>
+      </button>
+    </div>
+    <div class="col-6">
+      <form class="w-100" [formGroup]="searchForm" (ngSubmit)="search()">
+        <div class="input-group" style="float: right; width: 70%">
+          <select class="form-control mt-2 mb-2" formControlName="type">
+            <option value="null" selected>Choose search-type</option>
+            <option value="id">Search by ID</option>
+            <option value="name">Search by name</option>
+<!--            <option *ngFor="let o of listMovies">{{o.name}}</option>-->
+          </select>
+          <input type="text" class="form-control mt-2 mb-2 ms-1" placeholder="Search here" id="input-search"
+                 name="input-search" formControlName="name">
+          <button class="btn btn-outline-secondary mt-2 mb-2 me-2" type="submit" id="button-addon2">Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead class="table-dark">
+        <tr>
+          <th>Số xe</th>
+          <th>Loại xe</th>
+          <th>Tên nhà xe</th>
+          <th>Điểm đi</th>
+          <th>Điểm đến</th>
+          <th>Số điện thoại</th>
+          <th>Email</th>
+          <th>Giờ đi</th>
+          <th>Giờ đến</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let showtime of pageSlice">
+          <td (click)="openDialog(showtime.id)">{{showtime.id}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.type.name}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.name}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.startPlace}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.endPlace}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.phone}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.email}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.timeStart}}</td>
+          <td (click)="openDialog(showtime.id)">{{showtime.timeEnd}}</td>
+          <td>
+            <input type="checkbox" (change)="isChecked($event,showtime.id)" [checked]="checkedArr.includes(showtime.id)">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!--Multiple delete-->
+      <button *ngIf="checkedArr.length > 0" class="btn btn-danger d-flex float-end w-auto" style="right: 16px" id="btn-multi-delete"
+              data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Multi Delete
+      </button>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <mat-paginator class="bg-black bg-opacity-50" [length]="listCars.length"
+                   [pageSize]="pageSize" [pageSizeOptions]="[3, 5, 10, 20]" (page)="changePage($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+       data-bs-keyboard="false" aria-labelledby="staticBackdropLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirm?</h5>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete this list?<br>
+          <span style="color: red" *ngFor="let o of checkedArr">
+            <span style="color: black; font-size: smaller">ID =</span>
+            {{o}}&nbsp;&nbsp;
+          </span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-confirm-no">No
+          </button>
+          <button type="button" class="btn btn-danger" id="btn-confirm-yes" data-bs-dismiss="modal" (click)="delete()">
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Hết model-->
+</div>

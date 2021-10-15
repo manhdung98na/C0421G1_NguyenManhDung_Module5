@@ -1,8 +1,8 @@
-import {Part} from './part';
+import {CarType} from './car-type';
 
-export interface Core {
+export interface Car {
   id: number,
-  typeCar: Part,
+  typeCar: CarType,
   nameCar: string
   startPlace: string,
   endPlace: string,
