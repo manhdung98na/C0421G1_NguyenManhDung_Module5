@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Car} from '../model/car';
 import {CarType} from '../model/car-type';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -9,7 +9,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {DetailComponent} from '../detail/detail.component';
 import {PageEvent} from '@angular/material/paginator';
 import {NotificationService} from '../../shared/notification.service';
-import {log} from 'util';
+import jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-list-showtime',
@@ -26,6 +27,8 @@ export class ListComponent implements OnInit {
   });
   pageSlice;
   pageSize = 5;
+
+  @ViewChild('datatable', {static: false}) pdfTable: ElementRef;
 
   constructor(private carService: CarService,
               private carTypeService: CarTypeService,
@@ -109,5 +112,18 @@ export class ListComponent implements OnInit {
       endIndex = this.listCars.length;
     }
     this.pageSlice = this.listCars.slice(startIndex, endIndex);
+  }
+
+  exportToPDF() {
+    let data = this.pdfTable.nativeElement;
+    html2canvas(data).then(canvas => {
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jspdf('l', 'cm', 'a4'); //Generates PDF in landscape mode
+      // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
+      const imgWidth = 29.7; // your own stuff to calc the format you want
+      const imgHeight = canvas.height * imgWidth / canvas.width; // your own stuff to calc the format you want
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save('Filename.pdf');
+    });
   }
 }

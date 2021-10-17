@@ -6,6 +6,8 @@ import {CarTypeService} from '../service/car-type.service';
 import {CarService} from '../service/car.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from '../../shared/notification.service';
+import {Place} from '../model/place';
+import {PlaceService} from '../service/place.service';
 
 @Component({
   selector: 'app-edit',
@@ -15,7 +17,7 @@ import {NotificationService} from '../../shared/notification.service';
 export class EditComponent implements OnInit {
   carEdit: Car;
   types: CarType[];
-  places: string[] = ['Đà Nẵng', 'Nghệ An', 'Hà Nội', 'Sài Gòn', 'Vinh'];
+  places: Place[];
   editForm: FormGroup = new FormGroup({
     id: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required),
@@ -62,12 +64,16 @@ export class EditComponent implements OnInit {
 
   constructor(private carTypeService: CarTypeService,
               private carService: CarService,
+              private placeService: PlaceService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private notification: NotificationService) {
   }
 
   ngOnInit(): void {
+    this.placeService.getAll().subscribe(next => {
+      this.places = next;
+    })
     this.carTypeService.getAll().subscribe(next => {
       this.types = next;
       let id = this.activatedRoute.snapshot.params.id;

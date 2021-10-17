@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.regex.Pattern;
 
 @Service
 public class CarServiceImpl implements CarService {
@@ -84,15 +82,15 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> search(String type, String content) {
-        if (type.equals("id")){
+        if (type.equals("id")) {
             try {
                 int idSearch = Integer.parseInt(content);
                 return carRepository.searchByID(idSearch);
-            }catch (Exception e){
+            } catch (Exception e) {
                 return null;
             }
         }
-        if (type.equals("name")){
+        if (type.equals("name")) {
             return carRepository.searchByName(content);
         }
         return null;

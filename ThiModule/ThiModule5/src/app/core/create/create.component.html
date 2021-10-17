@@ -40,8 +40,8 @@
           <div class="form-group col-md-6">
             <label for="startPlace" class="mt-2">Điểm đi</label>
             <select class="form-select mb-1" id="startPlace" formControlName="startPlace" required>
-              <option *ngFor="let type of places" [selected]="type == createForm.controls.startPlace.value"
-                      [value]="type" [text]="type"></option>
+              <option *ngFor="let type of places" [selected]="type.name == createForm.controls.startPlace.value"
+                      [value]="type.name" [text]="type.name"></option>
             </select>
             <mat-error *ngFor="let validator of validateMessage.startPlace">
               <mat-error *ngIf="createForm.get('startPlace').hasError(validator.type)
@@ -51,8 +51,8 @@
           <div class="form-group col-md-6">
             <label for="endPlace" class="mt-2">Điểm đến</label>
             <select class="form-select mb-1" id="endPlace" formControlName="endPlace" required>
-              <option *ngFor="let type of places" [selected]="type == createForm.controls.startPlace.value"
-                      [value]="type" [text]="type"></option>
+              <option *ngFor="let type of places" [selected]="type.name == createForm.controls.endPlace.value"
+                      [value]="type.name" [text]="type.name"></option>
             </select>
             <mat-error *ngFor="let validator of validateMessage.endPlace">
               <mat-error *ngIf="createForm.get('endPlace').hasError(validator.type)

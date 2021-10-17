@@ -6,6 +6,8 @@ import {CarTypeService} from '../service/car-type.service';
 import {CarService} from '../service/car.service';
 import {Router} from '@angular/router';
 import {NotificationService} from '../../shared/notification.service';
+import {Place} from '../model/place';
+import {PlaceService} from '../service/place.service';
 
 @Component({
   selector: 'app-create',
@@ -15,8 +17,18 @@ import {NotificationService} from '../../shared/notification.service';
 export class CreateComponent implements OnInit {
   carCreate: Car;
   carTypes: CarType[];
-  places: string[] = ['Đà Nẵng', 'Nghệ An', 'Hà Nội', 'Sài Gòn', 'Vinh'];
-  createForm: FormGroup;
+  places: Place[];
+  createForm: FormGroup = new FormGroup({
+    id: new FormControl('', Validators.required),
+    type: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
+    startPlace: new FormControl('', Validators.compose([Validators.required])),
+    endPlace: new FormControl('', Validators.compose([Validators.required])),
+    phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern('(090|093|097)[0-9]{7}')])),
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    timeStart: new FormControl('', Validators.compose([Validators.required, this.checkTime])),
+    timeEnd: new FormControl('', Validators.compose([Validators.required, this.checkTime])),
+  });
   validateMessage = {
     id: [
       {type: 'required', message: 'Input ID!'}
@@ -54,33 +66,28 @@ export class CreateComponent implements OnInit {
 
   constructor(private carTypeService: CarTypeService,
               private carService: CarService,
+              private placeService: PlaceService,
               private router: Router,
               private notification: NotificationService) {
+
   }
 
   ngOnInit(): void {
+    this.placeService.getAll().subscribe(next => {
+      this.places = next;
+      console.log(this.places);
+    })
     this.carTypeService.getAll().subscribe(next => {
       this.carTypes = next;
-      this.createForm = new FormGroup({
-        id: new FormControl('', Validators.required),
-        type: new FormControl('', Validators.required),
-        name: new FormControl('', Validators.required),
-        startPlace: new FormControl(this.places[0], Validators.compose([Validators.required])),
-        endPlace: new FormControl(this.places[1], Validators.compose([Validators.required])),
-        phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern('(090|093|097)[0-9]{7}')])),
-        email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-        timeStart: new FormControl('', Validators.compose([Validators.required, this.checkTime])),
-        timeEnd: new FormControl('', Validators.compose([Validators.required, this.checkTime])),
-      });
     });
   }
 
   createCar() {
+    console.log(this.createForm.value);
     if (this.createForm.invalid) {
       this.notification.showNotification('Fail to create!', 'OK', 'error');
       return;
     }
-    let message = '';
     this.carCreate = this.createForm.value;
     this.carCreate.deleted = false;
     this.carService.add(this.carCreate).subscribe(next => {

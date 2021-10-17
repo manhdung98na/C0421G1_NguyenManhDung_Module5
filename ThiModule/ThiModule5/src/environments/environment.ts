@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   carUrl: "http://localhost:8080/api/cars",
   carTypeUrl: "http://localhost:8080/api/carTypes",
+  placeUrl: "http://localhost:8080/api/places",
 };
 
 /*
